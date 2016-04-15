@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace SmartFridge.Services
 {
-    public class FridgeService
+    public class ItemService
     {
-        private FridgeRepository _fridgeRepo;
+        private ItemRepository _itemRepo;
 
-        public FridgeService(FridgeRepository fridgeRepo)
+        public ItemService(ItemRepository itemRepo)
         {
-            _fridgeRepo = fridgeRepo;
+            _itemRepo = itemRepo;
         }
     }
 }

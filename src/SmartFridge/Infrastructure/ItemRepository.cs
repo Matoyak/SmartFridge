@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SmartFridge.Infrastructure
 {
-    public class FridgeRepository : GenericRepository<Fridge>
+    public class ItemRepository : GenericRepository<Item>
     {
-        public FridgeRepository(ApplicationDbContext db) : base(db) { }
+        public ItemRepository(ApplicationDbContext db) : base(db) { }
     }
 }

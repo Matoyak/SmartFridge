@@ -57,10 +57,10 @@ namespace SmartFridge
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
             //Repository.
-            services.AddScoped<FridgeRepository>();
+            services.AddScoped<ItemRepository>();
 
             //Services.
-            services.AddScoped<FridgeService>();
+            services.AddScoped<ItemService>();
 
             // convert Pascal to Camel
             services.AddMvc().AddJsonOptions(options => {
