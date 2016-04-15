@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace SmartFridge.Models
 {
-    public class Fridge
+    public class Category
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        
     }
 }

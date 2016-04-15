@@ -10,13 +10,13 @@ using SmartFridge.Services;
 namespace SmartFridge.Controllers
 {
     [Route("api/[controller]")]
-    public class FridgesController : Controller
+    public class ItemsController : Controller
     {
-        private FridgeService _fridgeServ;
+        private ItemService _itemServ;
 
-        public FridgesController(FridgeService fridgeServ)
+        public ItemsController(ItemService itemServ)
         {
-            _fridgeServ = fridgeServ;
+            _itemServ = itemServ;
         }
 
         // GET: api/values
