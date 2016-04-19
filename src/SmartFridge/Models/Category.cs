@@ -1,6 +1,6 @@
-﻿namespace SmartFridge.Models {
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
+namespace SmartFridge.Models {
     public class Category {
         public int Id { get; set; }
 
