@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using SmartFridge.Services;
+using SmartFridge.Services.Models;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,9 +22,9 @@ namespace SmartFridge.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ICollection<ItemDTO> GetAllItems()
         {
-            return new string[] { "value1", "value2" };
+            return _itemServ.GetItemList().ToList();
         }
 
        
