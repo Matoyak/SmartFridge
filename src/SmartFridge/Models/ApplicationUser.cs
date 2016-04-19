@@ -10,10 +10,10 @@ namespace SmartFridge.Models
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
     {
-        [Required(ErrorMessage = "First Name cannot be empty")]
+        //[Required(ErrorMessage = "First Name cannot be empty")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Last Name cannot be empty")]
+        //[Required(ErrorMessage = "Last Name cannot be empty")]
         public string LastName { get; set; }
 
         public string  FullName { 
