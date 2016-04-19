@@ -1,25 +1,20 @@
-﻿using SmartFridge.Infrastructure;
-using SmartFridge.Services.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using SmartFridge.Infrastructure;
+using SmartFridge.Services.Models;
 
-namespace SmartFridge.Services
-{
-    public class ItemService
-    {
+namespace SmartFridge.Services {
+
+    public class ItemService {
         private ItemRepository _itemRepo;
 
-        public ItemService(ItemRepository itemRepo)
-        {
+        public ItemService(ItemRepository itemRepo) {
             _itemRepo = itemRepo;
         }
-        public ICollection<ItemDTO> GetItemList()
-        {
+
+        public ICollection<ItemDTO> GetItemList() {
             return (from i in _itemRepo.List()
-                    select new ItemDTO()
-                    {
+                    select new ItemDTO() {
                         Name = i.Name,
                         ExpDate = i.ExpDate,
                         AddedDate = i.AddedDate,
@@ -27,6 +22,5 @@ namespace SmartFridge.Services
                         Categories = i.Categories
                     }).ToList();
         }
-
     }
 }
