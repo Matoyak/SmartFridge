@@ -24,6 +24,10 @@ namespace SmartFridge.Services {
                     }).ToList();
         }
 
+        /// <summary>
+        /// Adds an item to the database.
+        /// </summary>
+        /// <param name="item">The ItemDTO info grabbed from the controller, converted to Item model</param>
         public void AddItem(ItemDTO item) {
             Item newItem = new Item {
                 Name = item.Name,
@@ -33,6 +37,9 @@ namespace SmartFridge.Services {
                 ExpDate = item.ExpDate,
                 IsExpired = item.IsExpired
             };
+
+            _itemRepo.Add(newItem);
+            _itemRepo.SaveChanges();
         }
     }
 }
