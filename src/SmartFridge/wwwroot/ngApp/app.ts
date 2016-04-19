@@ -37,10 +37,16 @@ namespace SmartFridge {
                 controller: SmartFridge.Controllers.ExternalRegisterController,
                 controllerAs: 'controller'
             }) 
-            .state('about', {
-                url: '/about',
-                templateUrl: '/ngApp/views/about.html',
-                controller: SmartFridge.Controllers.AboutController,
+            .state('myFridge', {
+                url: '/fridge',
+                templateUrl: '/ngApp/views/Fridge.html',
+                controller: SmartFridge.Controllers.ViewFridgeController,
+                controllerAs: 'controller'
+            })
+            .state('addItem', {
+                url: '/add',
+                templateUrl: '/ngApp/views/AddItem.html',
+                controller: SmartFridge.Controllers.AddItemController,
                 controllerAs: 'controller'
             })
             .state('notFound', {
