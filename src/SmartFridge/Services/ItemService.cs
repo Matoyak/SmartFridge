@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using SmartFridge.Infrastructure;
+using SmartFridge.Models;
 using SmartFridge.Services.Models;
 
 namespace SmartFridge.Services {
@@ -21,6 +22,17 @@ namespace SmartFridge.Services {
                         IsExpired = i.IsExpired,
                         Categories = i.Categories
                     }).ToList();
+        }
+
+        public void AddItem(ItemDTO item) {
+            Item newItem = new Item {
+                Name = item.Name,
+                AddedDate = item.AddedDate,
+                Barcode = item.Barcode,
+                Categories = item.Categories,
+                ExpDate = item.ExpDate,
+                IsExpired = item.IsExpired
+            };
         }
     }
 }
