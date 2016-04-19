@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace SmartFridge.Services.Models
-{
-    public class ItemDTO
-    {
-        public string Name { get; set; }
-        public DateTime ExpDate { get; set; }
-        public DateTime AddedDate { get; set; }
+namespace SmartFridge.Services.Models {
+
+    public class ItemDTO {
         public bool IsExpired { get; set; }
+
+        public DateTime AddedDate { get; set; }
+        public DateTime ExpDate { get; set; }
+
+        public int Barcode { get; set; }
+
         public List<string> Categories { get; set; }
+
+        public string Name { get; set; }
     }
 }
