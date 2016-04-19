@@ -23,8 +23,8 @@ namespace SmartFridge.Services
                         Name = i.Name,
                         ExpDate = i.ExpDate,
                         AddedDate = i.AddedDate,
-                        IsExpired = i.IsExpired
-                        
+                        IsExpired = i.IsExpired,
+                        Categories = i.Categories
                     }).ToList();
         }
 
