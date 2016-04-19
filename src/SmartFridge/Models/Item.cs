@@ -8,7 +8,7 @@ namespace SmartFridge.Models {
         public bool IsExpired { get; set; }
         public DateTime AddedDate { get; set; }
         public DateTime ExpDate { get; set; }
-        public ICollection<Category> Category { get; set; }
+        public ICollection<Category> Categories { get; set; }
         public int Barcode { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
