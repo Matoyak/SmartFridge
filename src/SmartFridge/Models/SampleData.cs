@@ -6,23 +6,18 @@ using Microsoft.AspNet.Identity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace SmartFridge.Models
-{
-    public class SampleData
-    {
-        public async static Task Initialize(IServiceProvider serviceProvider)
-        {
+namespace SmartFridge.Models {
+    public class SampleData {
+        public async static Task Initialize(IServiceProvider serviceProvider) {
             var context = serviceProvider.GetService<ApplicationDbContext>();
             var userManager = serviceProvider.GetService<UserManager<ApplicationUser>>();
             context.Database.Migrate();
 
             // Ensure Stephen (IsAdmin)
             var stephen = await userManager.FindByNameAsync("Stephen.Walther@CoderCamps.com");
-            if (stephen == null)
-            {
+            if(stephen == null) {
                 // create user
-                stephen = new ApplicationUser
-                {
+                stephen = new ApplicationUser {
                     UserName = "Stephen.Walther@CoderCamps.com",
                     Email = "Stephen.Walther@CoderCamps.com"
                 };
@@ -34,11 +29,9 @@ namespace SmartFridge.Models
 
             // Ensure Mike (not IsAdmin)
             var mike = await userManager.FindByNameAsync("Mike@CoderCamps.com");
-            if (mike == null)
-            {
+            if(mike == null) {
                 // create user
-                mike = new ApplicationUser
-                {
+                mike = new ApplicationUser {
                     UserName = "Mike@CoderCamps.com",
                     Email = "Mike@CoderCamps.com"
                 };

@@ -5,11 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 
-namespace SmartFridge.Models
-{
+namespace SmartFridge.Models {
     // Add profile data for application users by adding properties to the ApplicationUser class
-    public class ApplicationUser : IdentityUser
-    {
+    public class ApplicationUser : IdentityUser {
         private string _fullName;
 
         //[Required(ErrorMessage = "First Name cannot be empty")]
@@ -18,7 +16,7 @@ namespace SmartFridge.Models
         //[Required(ErrorMessage = "Last Name cannot be empty")]
         public string LastName { get; set; }
 
-        public string  FullName { 
+        public string FullName {
             get { return _fullName; }
             private set { _fullName = FirstName + " " + LastName; }
         }
