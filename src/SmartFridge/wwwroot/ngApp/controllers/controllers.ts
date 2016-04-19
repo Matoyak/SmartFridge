@@ -15,9 +15,34 @@ namespace SmartFridge.Controllers {
         }
     }
 
+    export class ViewFridgeController {
+        public fridgeItems;
 
-    export class AboutController {
-        public message = 'Hello from the about page!';
+        constructor(private $http: ng.IHttpService) {
+            $http.get(`/api/Items`)
+                .then((response) => {
+                    this.fridgeItems = response.data;
+                })
+                .catch((response) => {
+                    console.log(response.data);
+                })
+        }
+    }
+
+    export class AddItemController {
+        public newItem;
+
+        constructor(private $http: ng.IHttpService) { }
+
+        postItem() {
+            this.$http.post(`/api/Items`, this.newItem)
+                .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((response) => {
+                    console.log(response.data);
+                })
+        }
     }
 
 }
