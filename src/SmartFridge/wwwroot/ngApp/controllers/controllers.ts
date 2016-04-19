@@ -44,15 +44,15 @@ namespace SmartFridge.Controllers {
                 categories: "Dairy"
             }
         ];
-        constructor(private $http: ng.IHttpService) {
-            $http.get(`/api/Items`)
-                .then((response) => {
-                    this.fridgeItems = response.data;
-                })
-                .catch((response) => {
-                    console.log(response.data);
-                })
-        }
+        //constructor(private $http: ng.IHttpService) {
+        //    $http.get(`/api/Items`)
+        //        .then((response) => {
+        //            this.fridgeItems = response.data;
+        //        })
+        //        .catch((response) => {
+        //            console.log(response.data);
+        //        })
+        //}
     }
 
     export class AddItemController {
