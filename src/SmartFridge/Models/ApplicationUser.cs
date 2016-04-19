@@ -10,6 +10,8 @@ namespace SmartFridge.Models
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
     {
+        private string _fullName;
+
         //[Required(ErrorMessage = "First Name cannot be empty")]
         public string FirstName { get; set; }
 
@@ -17,8 +19,8 @@ namespace SmartFridge.Models
         public string LastName { get; set; }
 
         public string  FullName { 
-            get { return FirstName + " " + LastName; }
-            
+            get { return _fullName; }
+            private set { _fullName = FirstName + " " + LastName; }
         }
 
         public ICollection<Item> Items { get; set; }
