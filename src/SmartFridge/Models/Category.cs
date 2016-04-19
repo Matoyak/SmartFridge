@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿namespace SmartFridge.Models {
 
-namespace SmartFridge.Models
-{
-    public class Category
-    {
+    public class Category {
         public int Id { get; set; }
         public string Name { get; set; }
-        
     }
 }
