@@ -19,7 +19,7 @@ namespace SmartFridge.Models {
         public int Barcode { get; set; }
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="Name cannot be empty")]
+        [Required(ErrorMessage = "Name cannot be empty")]
         public string Name { get; set; }
 
         public string UserId { get; set; }
