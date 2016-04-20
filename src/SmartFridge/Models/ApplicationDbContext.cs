@@ -7,13 +7,16 @@ using Microsoft.Data.Entity;
 
 namespace SmartFridge.Models {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser> {
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<ItemCategory> ItemCategories { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder) {
             base.OnModelCreating(builder);
+            builder.Entity<ItemCategory>().HasKey(ic => new { ic.CategoryId, ic.ItemId });
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
-        public DbSet<Item> Items { get; set; }
-        public DbSet<Category> Categories { get; set; }
     }
 }

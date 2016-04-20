@@ -8,8 +8,8 @@ using SmartFridge.Models;
 namespace SmartFridge.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160419152617_update_Item_AddBarcode")]
-    partial class update_Item_AddBarcode
+    [Migration("20160420221507_start")]
+    partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -115,6 +115,8 @@ namespace SmartFridge.Migrations
 
                     b.Property<string>("FirstName");
 
+                    b.Property<string>("FullName");
+
                     b.Property<string>("LastName");
 
                     b.Property<bool>("LockoutEnabled");
@@ -156,9 +158,8 @@ namespace SmartFridge.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ItemId");
-
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
                 });
@@ -176,11 +177,21 @@ namespace SmartFridge.Migrations
 
                     b.Property<bool>("IsExpired");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");
+                });
+
+            modelBuilder.Entity("SmartFridge.Models.ItemCategory", b =>
+                {
+                    b.Property<int>("CategoryId");
+
+                    b.Property<int>("ItemId");
+
+                    b.HasKey("CategoryId", "ItemId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>
@@ -215,18 +226,22 @@ namespace SmartFridge.Migrations
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("SmartFridge.Models.Category", b =>
-                {
-                    b.HasOne("SmartFridge.Models.Item")
-                        .WithMany()
-                        .HasForeignKey("ItemId");
-                });
-
             modelBuilder.Entity("SmartFridge.Models.Item", b =>
                 {
                     b.HasOne("SmartFridge.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("SmartFridge.Models.ItemCategory", b =>
+                {
+                    b.HasOne("SmartFridge.Models.Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("SmartFridge.Models.Item")
+                        .WithMany()
+                        .HasForeignKey("ItemId");
                 });
         }
     }

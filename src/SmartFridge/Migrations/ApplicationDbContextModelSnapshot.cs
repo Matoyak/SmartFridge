@@ -157,8 +157,6 @@ namespace SmartFridge.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ItemId");
-
                     b.Property<string>("Name")
                         .IsRequired();
 
@@ -184,6 +182,15 @@ namespace SmartFridge.Migrations
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");
+                });
+
+            modelBuilder.Entity("SmartFridge.Models.ItemCategory", b =>
+                {
+                    b.Property<int>("CategoryId");
+
+                    b.Property<int>("ItemId");
+
+                    b.HasKey("CategoryId", "ItemId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>
@@ -218,18 +225,22 @@ namespace SmartFridge.Migrations
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("SmartFridge.Models.Category", b =>
-                {
-                    b.HasOne("SmartFridge.Models.Item")
-                        .WithMany()
-                        .HasForeignKey("ItemId");
-                });
-
             modelBuilder.Entity("SmartFridge.Models.Item", b =>
                 {
                     b.HasOne("SmartFridge.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("SmartFridge.Models.ItemCategory", b =>
+                {
+                    b.HasOne("SmartFridge.Models.Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("SmartFridge.Models.Item")
+                        .WithMany()
+                        .HasForeignKey("ItemId");
                 });
         }
     }

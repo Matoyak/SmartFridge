@@ -8,10 +8,17 @@ namespace SmartFridge.Infrastructure {
     public class ItemRepository : GenericRepository<Item> {
         public ItemRepository(ApplicationDbContext db) : base(db) { }
 
-        public IQueryable<Item> FindItemById(int id) {
+        public IQueryable<Item> GetItemById(int id) {
             return from i in _db.Items
                    where i.Id == id
                    select i;
+        }
+
+        public IQueryable<Item> GetItemsByUsername(string userName) {
+            return (from i in _db.Items
+                    where i.User.UserName == userName
+                    //possibly order things here
+                    select i);
         }
     }
 }
