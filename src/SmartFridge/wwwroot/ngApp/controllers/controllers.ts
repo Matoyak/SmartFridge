@@ -16,7 +16,11 @@ namespace SmartFridge.Controllers {
     }
 
     export class ViewFridgeController {
+
+
         public fridgeItems;
+        public predicate;
+        public reverse;
         public testItems = [
             {
                 name:"Apple",
@@ -44,6 +48,7 @@ namespace SmartFridge.Controllers {
                 categories: "Dairy"
             }
         ];
+
         constructor(private $http: ng.IHttpService) {
             $http.get(`/api/Items`)
                 .then((response) => {
@@ -51,7 +56,17 @@ namespace SmartFridge.Controllers {
                 })
                 .catch((response) => {
                     console.log(response.data);
-                })
+                });
+        }
+
+        public order(property) {
+            if (property === this.predicate) {
+                this.reverse = !this.reverse;
+            }
+            else {
+                this.predicate = property;
+                this.reverse = false;
+            }
         }
     }
 

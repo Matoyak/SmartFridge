@@ -13,9 +13,11 @@ namespace SmartFridge.Services {
             _itemRepo = itemRepo;
         }
 
-        public ICollection<ItemDTO> GetItemList() {
+        public ICollection<ItemDTO> GetItemList()
+        {
             return (from i in _itemRepo.List()
-                    select new ItemDTO() {
+                    select new ItemDTO()
+                    {
                         Name = i.Name,
                         ExpDate = i.ExpDate,
                         AddedDate = i.AddedDate,
