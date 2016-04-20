@@ -12,7 +12,7 @@ namespace SmartFridge.Services.Models {
 
         public int Barcode { get; set; }
 
-        public ICollection<Category> Categories { get; set; }
+        public ICollection<string> Categories { get; set; }
 
         public string Name { get; set; }
     }
