@@ -16,10 +16,22 @@ namespace SmartFridge.Controllers {
             _itemServ = itemServ;
         }
 
-        // GET: api/values
+        /// <summary>
+        /// Use only for testing purposes, in actual code use GetItemsByUser
+        /// </summary>
+        /// <returns>List of all items</returns>
         [HttpGet]
         public ICollection<ItemDTO> GetAllItems() {
-            return _itemServ.GetItemList().ToList();
+            return _itemServ.GetItemList();
+        }
+
+        /// <summary>
+        /// Calls the Item Service to return all items owned by a user
+        /// </summary>
+        /// <returns>Returns all items owned by the user.</returns>
+        [HttpGet]
+        public ICollection<ItemDTO> GetItemsByUser() {
+            return _itemServ.GetItemListByUser(User.Identity.Name);
         }
 
         /// <summary>

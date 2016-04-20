@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SmartFridge.Models {
     public class Category {
@@ -6,5 +8,7 @@ namespace SmartFridge.Models {
 
         [Required(ErrorMessage = "Name cannot be empty")]
         public string Name { get; set; }
+
+        public ICollection<ItemCategory> ItemCategories { get; set; }
     }
 }

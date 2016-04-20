@@ -4,10 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SmartFridge.Infrastructure
-{
-    public class ItemRepository : GenericRepository<Item>
-    {
+namespace SmartFridge.Infrastructure {
+    public class ItemRepository : GenericRepository<Item> {
         public ItemRepository(ApplicationDbContext db) : base(db) { }
+
+        public IQueryable<Item> GetItemById(int id) {
+            return from i in _db.Items
+                   where i.Id == id
+                   select i;
+        }
+
+        public IQueryable<Item> GetItemsByUsername(string userName) {
+            return (from i in _db.Items
+                    where i.User.UserName == userName
+                    //possibly order things here
+                    select i);
+        }
     }
 }

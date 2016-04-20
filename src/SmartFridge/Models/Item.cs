@@ -14,7 +14,7 @@ namespace SmartFridge.Models {
         [Required(ErrorMessage = "Expire Date cannot be empty")]
         public DateTime ExpDate { get; set; }
 
-        public ICollection<Category> Categories { get; set; }
+        public ICollection<ItemCategory> ItemCategories { get; set; }
 
         public int Barcode { get; set; }
         public int Id { get; set; }
@@ -22,8 +22,9 @@ namespace SmartFridge.Models {
         [Required(ErrorMessage = "Name cannot be empty")]
         public string Name { get; set; }
 
-        public string UserId { get; set; }
         [ForeignKey("UserId")]
+        public string UserId { get; set; }
+
         public ApplicationUser User { get; set; }
     }
 }
