@@ -21,5 +21,8 @@
   </div>
 </section>
 <ul>
+  <li ng-repeat="item in controller.fridgeItems">{{item}}</li>
+</ul>
+<ul>
   <li ng-repeat="item in controller.testItems">{{item.name}} : {{item.expDate}} : {{item.category}}</li>
 </ul>

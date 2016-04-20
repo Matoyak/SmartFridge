@@ -44,23 +44,31 @@ namespace SmartFridge.Controllers {
                 categories: "Dairy"
             }
         ];
-        //constructor(private $http: ng.IHttpService) {
-        //    $http.get(`/api/Items`)
-        //        .then((response) => {
-        //            this.fridgeItems = response.data;
-        //        })
-        //        .catch((response) => {
-        //            console.log(response.data);
-        //        })
-        //}
+        constructor(private $http: ng.IHttpService) {
+            //$http.get(`/api/Items`)
+            //    .then((response) => {
+            //        this.fridgeItems = response.data;
+            //    })
+            //    .catch((response) => {
+            //        console.log(response.data);
+            //    })
+        }
     }
 
     export class AddItemController {
         public newItem;
-
+        public selectedCategory;
+        public categories = [];
         constructor(private $http: ng.IHttpService) { }
 
+        testItem() {
+            this.newItem.categories = this.categories;
+            console.log(this.newItem);
+        }
         postItem() {
+            
+            this.newItem.categories = this.categories;
+            console.log(this.newItem);
             this.$http.post(`/api/Items`, this.newItem)
                 .then((response) => {
                     console.log(response.data);
@@ -68,6 +76,12 @@ namespace SmartFridge.Controllers {
                 .catch((response) => {
                     console.log(response.data);
                 })
+        }
+
+        newCategory(value) {
+            console.log(value);
+            this.categories.push(value);
+            console.log(this.categories);
         }
     }
 
