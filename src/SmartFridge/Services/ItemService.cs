@@ -31,7 +31,7 @@ namespace SmartFridge.Services {
         public void AddItem(ItemDTO item) {
             Item newItem = new Item {
                 Name = item.Name,
-                AddedDate = item.AddedDate,
+                AddedDate = System.DateTime.Now,
                 Barcode = item.Barcode,
                 Categories = item.Categories,
                 ExpDate = item.ExpDate,
@@ -41,5 +41,14 @@ namespace SmartFridge.Services {
             _itemRepo.Add(newItem);
             _itemRepo.SaveChanges();
         }
+
+        //public void DeleteItem(int id) {
+        //    Item item = _itemRepo.FindItemById(id).FirstOrDefault();
+        //    //if (item == null) {
+        //    //    throw new HttpResponseException(HttpStatusCode.NotFound);
+        //    //}
+        //    //contains method (Where category contains c.name
+        //    item.Dispose();
+        //}
     }
 }
