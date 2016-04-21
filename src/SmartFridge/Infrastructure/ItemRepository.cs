@@ -20,5 +20,14 @@ namespace SmartFridge.Infrastructure {
                     //possibly order things here
                     select i);
         }
+
+        public bool Delete(int id) {
+            Item dbItem = GetItemById(id).FirstOrDefault();
+            if(dbItem == null) {
+                return false;
+            }
+            _db.Remove(dbItem);
+            return true;
+        }
     }
 }

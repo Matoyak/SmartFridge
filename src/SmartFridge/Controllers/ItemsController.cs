@@ -40,13 +40,22 @@ namespace SmartFridge.Controllers {
         /// <param name="item">Item info from angular input</param>
         /// <returns>IActionResult based on a valid or invalid model state.</returns>
         [HttpPost]
-        public IActionResult Post([FromBody]ItemDTO item) {
+        public IActionResult Post([FromBody]ItemDTO item, string currentUser) {
             if(ModelState.IsValid) {
                 //add new item to db
-                _itemServ.AddItem(item);
+                _itemServ.AddItem(item, User.Identity.Name);
                 return Ok(item);
             }
             return HttpBadRequest(ModelState);
+        }
+
+        /// <summary>
+        /// Deletes item from the database.
+        /// </summary>
+        /// <param name="id">The item to be deleted.</param>
+        [HttpDelete("{id}")]
+        public void Delete(int id) {
+            _itemServ.DeleteItem(id);
         }
     }
 }

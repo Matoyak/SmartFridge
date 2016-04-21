@@ -20,9 +20,35 @@
     </div>
   </div>
 </section>
-<ul>
+<!--<ul>
   <li ng-repeat="item in controller.fridgeItems">{{item}}</li>
 </ul>
 <ul>
   <li ng-repeat="item in controller.testItems">{{item.name}} : {{item.expDate}} : {{item.category}}</li>
-</ul>
+</ul>-->
+
+
+<div>
+    <pre>Sorting predicate = {{controller.predicate}}, reverse = {{controller.reverse}}</pre>
+    <table class="item">
+        <tr>
+            <th>
+                <button ng-click="order('name')">Name</button>
+                <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
+            </th>
+            <th>
+                <button ng-click="order('exp')">Expire Date</button>
+                <span class="sortorder" ng-show="predicate === 'exp'" ng-class="{reverse:reverse}"></span>
+            </th>
+            <th>
+                <button ng-click="order('category')">Category</button>
+                <span class="sortorder" ng-show="predicate === 'category'" ng-class="{reverse:reverse}"></span>
+            </th>
+        </tr>
+        <tr ng-repeat="item in controller.testItems | orderBy:predicate:reverse">
+            <td>{{item.name}}</td>
+            <td>{{item.expDate}}</td>
+            <td>{{item.category}}</td>
+        </tr>
+    </table>
+</div>

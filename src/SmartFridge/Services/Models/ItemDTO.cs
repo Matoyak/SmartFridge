@@ -12,8 +12,14 @@ namespace SmartFridge.Services.Models {
 
         public int Barcode { get; set; }
 
-        public ICollection<string> Categories { get; set; }
+        public ICollection<KeyValueDTO<int>> Categories { get; set; }
 
         public string Name { get; set; }
+    }
+
+    public class KeyValueDTO<T>
+    {
+        public string Name { get; set; }
+        public T Value { get; set; }
     }
 }
