@@ -2,105 +2,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="SmartFridge">
 <head>
   <title>SmartFridge</title>
-  <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
-  <link href="~/css/site.css" rel="stylesheet" />
-  <link href="~/css/freelancer.css" rel="stylesheet" />
+  
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <base href="/" />
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   @*Date picker*@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <link href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+  <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="~/css/site.css" rel="stylesheet" />
+  <link href="~/css/freelancer.css" rel="stylesheet" />
 </head>
-<body class="index">
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header page-scroll">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#page-top">Smart Fridge</a>
-      </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="hidden">
-            <a href="#page-top"></a>
-          </li>
-          <li class="page-scroll">
-            <a href="/fridge">Fridge</a>
-          </li>
-          <li class="page-scroll">
-            <a href="#about">Expired</a>
-          </li>
-          <li class="page-scroll">
-            <a href="/add">Add</a>
-          </li>
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-  </nav>
+<body>
+
 
   <ui-view></ui-view>
-  <!-- Footer -->
-  <footer class="text-center">
-    <div class="footer-above">
-      <div class="container">
-        <div class="row">
-          <div class="footer-col col-md-4">
-            <h3>Location</h3>
-            <p>
-              3481 Melrose Place
-              <br>Beverly Hills, CA 90210
-            </p>
-          </div>
-          <div class="footer-col col-md-4">
-            <h3>Around the Web</h3>
-            <ul class="list-inline">
-              <li>
-                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-              </li>
-              <li>
-                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-              </li>
-              <li>
-                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-              </li>
-              <li>
-                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-              </li>
-              <li>
-                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
-              </li>
-            </ul>
-          </div>
-          <div class="footer-col col-md-4">
-            <h3>About Freelancer</h3>
-            <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-below">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            Copyright &copy; Your Website 2014
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+
 
 
   <!-- Library Files -->
@@ -110,16 +33,13 @@
   <script src="~/lib/angular-touch/angular-touch.js"></script>
   <script src="~/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="~/js/cbpanimatedheader.js"></script>
-  <script src="~/js/classie.js"></script>
-  <script src="~/js/jquery.js"></script>
 
   <!-- App Files-->
   <script src="~/ngapp/app.js"></script>
   <script src="~/ngapp/controllers/controllers.js"></script>
   <script src="~/ngapp/services/services.js"></script>
-
-
+  <script src="~/lib/materialize/dist/js/materialize.js"></script>            
+  <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
   <!-- Security -->
   <script src="~/ngapp/controllers/accountcontroller.js"></script>
   <script src="~/ngapp/services/accountservice.js"></script>

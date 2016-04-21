@@ -58,16 +58,17 @@ namespace SmartFridge.Controllers {
     export class AddItemController {
         public newItem;
         public selectedCategory;
-        public categories = [];
+        public selectedCategories = [];
+        public foodCategories = ["Dairy","Frozen","Refrigerated","Meat","Vegetable","Fruit","Other"];
         constructor(private $http: ng.IHttpService) { }
 
         testItem() {
-            this.newItem.categories = this.categories;
+            this.newItem.categories = this.selectedCategories;
             console.log(this.newItem);
         }
         postItem() {
             
-            this.newItem.categories = this.categories;
+            this.newItem.categories = this.selectedCategories;
             console.log(this.newItem);
             this.$http.post(`/api/Items`, this.newItem)
                 .then((response) => {
@@ -78,10 +79,10 @@ namespace SmartFridge.Controllers {
                 })
         }
 
-        newCategory(value) {
-            console.log(value);
-            this.categories.push(value);
-            console.log(this.categories);
+        newCategory() {
+            
+            this.selectedCategories.push(this.selectedCategory);
+            console.log(this.selectedCategories);
         }
     }
 

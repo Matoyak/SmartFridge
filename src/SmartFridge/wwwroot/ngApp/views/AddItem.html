@@ -34,15 +34,17 @@
           <!--category-->
           <div class="row control-group">
             <div id="selectGroup" class="form-group col-xs-12 floating-label-form-group controls">
-               
+               <select ng-model="controller.selectedCategory" ng-change="controller.newCategory()">
+                 <option ng-repeat="category in controller.foodCategories">{{category}}</option>
+               </select>
             </div>
           </div>
           <br>
           <div id="success"></div>
           <div class="row">
             <span ng-repeat="category in controller.categories">#{{category}} </span>
-            <div class="chip">
-              Dairy
+            <div class="chip" ng-repeat="category in controller.selectedCategories">
+              {{category}}
               <i class="material-icons">close</i>
             </div>
             <div class="form-group col-xs-12">
@@ -56,5 +58,4 @@
     <div id="model" class="col-lg-6"></div>
   </div>
 </div>
-
 
