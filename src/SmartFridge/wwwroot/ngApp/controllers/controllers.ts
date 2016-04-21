@@ -52,15 +52,8 @@ namespace SmartFridge.Controllers {
         public foodCategories = ["Dairy", "Frozen", "Refrigerated", "Meat", "Vegetable", "Fruit", "Other"];
         constructor(private $http: ng.IHttpService) { }
 
-        //testItem() {
-        //    this.newItem.categories = this.selectedCategories;
-        //    console.log(this.newItem);
-        //}
-
         postItem() {
-
             this.categories = this.selectedCategories;
-            //console.log(this.newItem);
             this.$http.post("/api/items", {
                 name: this.name,
                 expDate: this.expDate,

@@ -36,7 +36,7 @@ namespace SmartFridge {
                 templateUrl: '/ngApp/views/externalRegister.html',
                 controller: SmartFridge.Controllers.ExternalRegisterController,
                 controllerAs: 'controller'
-            }) 
+            })
             .state('myFridge', {
                 url: '/fridge',
                 templateUrl: '/ngApp/views/Fridge.html',
@@ -44,7 +44,7 @@ namespace SmartFridge {
                 controllerAs: 'controller'
             })
             .state('addItem', {
-                url: '/add',
+                url: '/addItem',
                 templateUrl: '/ngApp/views/AddItem.html',
                 controller: SmartFridge.Controllers.AddItemController,
                 controllerAs: 'controller'
@@ -61,7 +61,7 @@ namespace SmartFridge {
         $locationProvider.html5Mode(true);
     });
 
-    
+
     angular.module('SmartFridge').factory('authInterceptor', (
         $q: ng.IQService,
         $window: ng.IWindowService,
@@ -86,6 +86,6 @@ namespace SmartFridge {
         $httpProvider.interceptors.push('authInterceptor');
     });
 
-    
+
 
 }

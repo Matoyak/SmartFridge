@@ -13,6 +13,7 @@
     "angular-touch": "1.5.1",
     "angular-ui-router": "0.2.18",
     "materialize": "^0.97.6",
+    "angular-materialize": "^0.1.4",
     "font-awesome": "^4.5.0"
   },
   "resolutions": {
