@@ -23,13 +23,13 @@ namespace SmartFridge.Controllers {
         public reverse;
         public testItems = [
             {
-                name:"Apple",
+                name: "Apple",
                 expDate: "April 6",
                 categories: "Fruit"
             },
             {
-                name:"Milk",
-                expDate:"April 28",
+                name: "Milk",
+                expDate: "April 28",
                 categories: "Dairy"
             },
             {
@@ -39,24 +39,24 @@ namespace SmartFridge.Controllers {
             },
             {
                 name: "Eggs",
-                expDate:"May 10",
+                expDate: "May 10",
                 categories: "Dairy"
             },
             {
                 name: "Cheese",
-                expDate:"June 1",
+                expDate: "June 1",
                 categories: "Dairy"
             }
         ];
 
         constructor(private $http: ng.IHttpService) {
-            //$http.get(`/api/Items`)
-            //    .then((response) => {
-            //        this.fridgeItems = response.data;
-            //    })
-            //    .catch((response) => {
-            //        console.log(response.data);
-            //    })
+            $http.get(`/api/Items`)
+                .then((response) => {
+                    this.fridgeItems = response.data;
+                })
+                .catch((response) => {
+                    console.log(response.data);
+                })
         }
 
         public order(property) {
@@ -74,7 +74,7 @@ namespace SmartFridge.Controllers {
         public newItem;
         public selectedCategory;
         public selectedCategories = [];
-        public foodCategories = ["Dairy","Frozen","Refrigerated","Meat","Vegetable","Fruit","Other"];
+        public foodCategories = ["Dairy", "Frozen", "Refrigerated", "Meat", "Vegetable", "Fruit", "Other"];
         constructor(private $http: ng.IHttpService) { }
 
         testItem() {
@@ -82,7 +82,7 @@ namespace SmartFridge.Controllers {
             console.log(this.newItem);
         }
         postItem() {
-            
+
             this.newItem.categories = this.selectedCategories;
             console.log(this.newItem);
             this.$http.post(`/api/Items`, this.newItem)
@@ -95,7 +95,7 @@ namespace SmartFridge.Controllers {
         }
 
         newCategory() {
-            
+
             this.selectedCategories.push(this.selectedCategory);
             console.log(this.selectedCategories);
         }
