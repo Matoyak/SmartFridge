@@ -58,7 +58,8 @@ namespace SmartFridge
 
             //Repository.
             services.AddScoped<ItemRepository>();
-
+            services.AddScoped<CategoryRepository>();
+            services.AddScoped<UserRepository>();
             //Services.
             services.AddScoped<ItemService>();
 

@@ -9,10 +9,12 @@ namespace SmartFridge.Services {
     public class ItemService {
         private ItemRepository _itemRepo;
         private UserRepository _userRepo;
+        private CategoryRepository _catRepo;
 
-        public ItemService(ItemRepository itemRepo, UserRepository userRepo) {
+        public ItemService(ItemRepository itemRepo, UserRepository userRepo, CategoryRepository catRepo) {
             _itemRepo = itemRepo;
             _userRepo = userRepo;
+            _catRepo = catRepo;
         }
 
         /// <summary>
@@ -27,7 +29,11 @@ namespace SmartFridge.Services {
                         ExpDate = i.ExpDate,
                         AddedDate = i.AddedDate,
                         IsExpired = i.IsExpired,
-                        Categories = i.ItemCategories.Select(ic => ic.Category.Name).ToList()
+                        Categories = i.ItemCategories.Select(ic => new KeyValueDTO<int>
+                        {
+                            Name = ic.Category.Name,
+                            Value = ic.CategoryId
+                        }).ToList()
                     }).ToList();
         }
 
@@ -38,7 +44,11 @@ namespace SmartFridge.Services {
                         ExpDate = i.ExpDate,
                         AddedDate = i.AddedDate,
                         IsExpired = i.IsExpired,
-                        Categories = i.ItemCategories.Select(ic => ic.Category.Name).ToList()
+                        Categories = i.ItemCategories.Select(ic => new KeyValueDTO<int>
+                        {
+                            Name = ic.Category.Name,
+                            Value = ic.CategoryId
+                        }).ToList()
                     }
                     ).ToList();
         }
@@ -47,15 +57,25 @@ namespace SmartFridge.Services {
         /// Adds an item to the database.
         /// </summary>
         /// <param name="item">The ItemDTO info grabbed from the controller, converted to Item model</param>
-        public void AddItem(ItemDTO item) {
+        public void AddItem(ItemDTO item, string currentUser) {
+
             Item newItem = new Item {
                 Name = item.Name,
                 AddedDate = System.DateTime.Now,
+                ItemCategories = new List<ItemCategory>(),
                 Barcode = item.Barcode,
-                //Categories = item.Categories,
                 ExpDate = item.ExpDate,
-                IsExpired = item.IsExpired
+                IsExpired = item.IsExpired,
+                User = (_userRepo.FindByUserName(currentUser).FirstOrDefault())
             };
+
+            foreach(var c in item.Categories)
+            {
+                newItem.ItemCategories.Add(new ItemCategory
+                {
+                    CategoryId = c.Value
+                });
+            }
 
             _itemRepo.Add(newItem);
             _itemRepo.SaveChanges();
