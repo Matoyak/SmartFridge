@@ -14,8 +14,5 @@
     "angular-ui-router": "0.2.18",
     "materialize": "^0.97.6",
     "font-awesome": "^4.5.0"
-  },
-  "resolutions": {
-    "angular": "^1.0.8"
   }
 }
