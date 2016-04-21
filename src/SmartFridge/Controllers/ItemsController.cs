@@ -30,11 +30,11 @@ namespace SmartFridge.Controllers {
         /// Calls the Item Service to return all items owned by a user
         /// </summary>
         /// <returns>Returns all items owned by the user.</returns>
-        [HttpGet]
-        public ICollection<ItemDTO> GetItemsByUser()
-        {
-            return _itemServ.GetItemListByUser(User.Identity.Name);
-        }
+        //[HttpGet]
+        //public ICollection<ItemDTO> GetItemsByUser()
+        //{
+        //    return _itemServ.GetItemListByUser(User.Identity.Name);
+        //}
 
         /// <summary>
         /// Calls the Item Service to add an Item to the Database

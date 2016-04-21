@@ -21,36 +21,9 @@ namespace SmartFridge.Controllers {
         public fridgeItems;
         public predicate;
         public reverse;
-        public testItems = [
-            {
-                name: "Apple",
-                expDate: "April 6",
-                categories: "Fruit"
-            },
-            {
-                name: "Milk",
-                expDate: "April 28",
-                categories: "Dairy"
-            },
-            {
-                name: "Steak",
-                expDate: "May 20",
-                categories: "Meat"
-            },
-            {
-                name: "Eggs",
-                expDate: "May 10",
-                categories: "Dairy"
-            },
-            {
-                name: "Cheese",
-                expDate: "June 1",
-                categories: "Dairy"
-            }
-        ];
 
         constructor(private $http: ng.IHttpService) {
-            $http.get(`/api/Items`)
+            $http.get('/api/Items')
                 .then((response) => {
                     this.fridgeItems = response.data;
                 })
