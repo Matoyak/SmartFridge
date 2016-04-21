@@ -61,14 +61,13 @@ namespace SmartFridge.Services {
             _itemRepo.SaveChanges();
         }
 
-        //public bool DeleteItem(int id) {
-        //    Item item = _itemRepo.FindItemById(id).FirstOrDefault();
-        //    if(item == null) {
-        //        return false;
-        //    }
-        //    //contains method || (Where category contains c.name
-        //    item.Dispose(); //create a delete method in repo
-        //    //linq query that projects into strings categories.select.c.name
-        //}
+        public bool DeleteItem(int id) {
+            bool check = _itemRepo.Delete(id);
+            if(!check) {
+                return false;
+            }
+            _itemRepo.SaveChanges();
+            return true;
+        }
     }
 }

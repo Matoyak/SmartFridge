@@ -48,5 +48,14 @@ namespace SmartFridge.Controllers {
             }
             return HttpBadRequest(ModelState);
         }
+
+        /// <summary>
+        /// Deletes item from the database.
+        /// </summary>
+        /// <param name="id">The item to be deleted.</param>
+        [HttpDelete("{id}")]
+        public void Delete(int id) {
+            _itemServ.DeleteItem(id);
+        }
     }
 }
