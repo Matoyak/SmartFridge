@@ -17,8 +17,7 @@ namespace SmartFridge.Services.Models {
         public string Name { get; set; }
     }
 
-    public class KeyValueDTO<T>
-    {
+    public class KeyValueDTO<T> {
         public string Name { get; set; }
         public T Value { get; set; }
     }
