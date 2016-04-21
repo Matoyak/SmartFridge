@@ -2,31 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="SmartFridge">
 <head>
   <title>SmartFridge</title>
-  
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
   <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-  <base href="/" />
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  @*Date picker*@
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <link href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
-  <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <base href="/" />
   <link href="~/css/site.css" rel="stylesheet" />
   <link href="~/css/freelancer.css" rel="stylesheet" />
 </head>
 <body>
-
+  <a ui-sref="addItem">CLICK ME TO ADD</a>
 
   <ui-view></ui-view>
 
-
-
   <!-- Library Files -->
+  <script src="~/lib/jquery/dist/jquery.js"></script>
   <script src="~/lib/angular/angular.js"></script>
   <script src="~/lib/angular-resource/angular-resource.js"></script>
   <script src="~/lib/angular-animate/angular-animate.js"></script>
@@ -38,15 +28,11 @@
   <script src="~/ngapp/app.js"></script>
   <script src="~/ngapp/controllers/controllers.js"></script>
   <script src="~/ngapp/services/services.js"></script>
-  <script src="~/lib/materialize/dist/js/materialize.js"></script>            
+  <script src="~/lib/materialize/dist/js/materialize.js"></script>
   <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
   <!-- Security -->
   <script src="~/ngapp/controllers/accountcontroller.js"></script>
   <script src="~/ngapp/services/accountservice.js"></script>
-
- 
-
-
 
 </body>
 </html>

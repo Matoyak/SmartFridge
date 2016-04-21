@@ -23,14 +23,12 @@ namespace SmartFridge.Services {
         /// <returns>Returns a Collection of all items in the database.</returns>
         public ICollection<ItemDTO> GetItemList() {
             return (from i in _itemRepo.List()
-                    select new ItemDTO()
-                    {
+                    select new ItemDTO() {
                         Name = i.Name,
                         ExpDate = i.ExpDate,
                         AddedDate = i.AddedDate,
                         IsExpired = i.IsExpired,
-                        Categories = i.ItemCategories.Select(ic => new KeyValueDTO<int>
-                        {
+                        Categories = i.ItemCategories.Select(ic => new KeyValueDTO<int> {
                             Name = ic.Category.Name,
                             Value = ic.CategoryId
                         }).ToList()
@@ -44,8 +42,7 @@ namespace SmartFridge.Services {
                         ExpDate = i.ExpDate,
                         AddedDate = i.AddedDate,
                         IsExpired = i.IsExpired,
-                        Categories = i.ItemCategories.Select(ic => new KeyValueDTO<int>
-                        {
+                        Categories = i.ItemCategories.Select(ic => new KeyValueDTO<int> {
                             Name = ic.Category.Name,
                             Value = ic.CategoryId
                         }).ToList()
@@ -62,20 +59,28 @@ namespace SmartFridge.Services {
             Item newItem = new Item {
                 Name = item.Name,
                 AddedDate = System.DateTime.Now,
-                ItemCategories = new List<ItemCategory>(),
                 Barcode = item.Barcode,
                 ExpDate = item.ExpDate,
                 IsExpired = item.IsExpired,
                 User = (_userRepo.FindByUserName(currentUser).FirstOrDefault())
             };
 
-            foreach(var c in item.Categories)
-            {
-                newItem.ItemCategories.Add(new ItemCategory
-                {
-                    CategoryId = c.Value
-                });
+            List<Category> dbCategories = _catRepo.GetCategories(item.Categories.Select(cat => cat.Name)).ToList();
+            foreach(Category newCat in (from c in item.Categories
+                                        where !dbCategories.Any(db => db.Name == c.Name)
+                                        select new Category() {
+                                            Name = c.Name
+                                        })) {
+                _catRepo.Add(newCat);
+                dbCategories.Add(newCat);
             }
+            _catRepo.SaveChanges();
+
+            newItem.ItemCategories = (from c in dbCategories
+                                      select new ItemCategory() {
+                                          Category = c,
+                                          Item = newItem
+                                      }).ToList();
 
             _itemRepo.Add(newItem);
             _itemRepo.SaveChanges();

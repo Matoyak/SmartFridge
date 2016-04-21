@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 using SmartFridge.Services;
 using SmartFridge.Services.Models;
@@ -8,7 +9,8 @@ using SmartFridge.Services.Models;
 
 namespace SmartFridge.Controllers {
 
-    [Route("api/[controller]")]
+    [Route("api/Items")]
+    [Authorize]
     public class ItemsController : Controller {
         private ItemService _itemServ;
 
@@ -21,8 +23,7 @@ namespace SmartFridge.Controllers {
         /// </summary>
         /// <returns>List of all items</returns>
         [HttpGet]
-        public ICollection<ItemDTO> GetAllItems()
-        {
+        public ICollection<ItemDTO> GetAllItems() {
             return _itemServ.GetItemList();
         }
 
@@ -42,7 +43,8 @@ namespace SmartFridge.Controllers {
         /// <param name="item">Item info from angular input</param>
         /// <returns>IActionResult based on a valid or invalid model state.</returns>
         [HttpPost]
-        public IActionResult Post([FromBody]ItemDTO item, string currentUser) {
+        public IActionResult Post([FromBody]ItemDTO item) {
+            //_itemServ.AddItem(item, User.Identity.Name);
             if(ModelState.IsValid) {
                 //add new item to db
                 _itemServ.AddItem(item, User.Identity.Name);

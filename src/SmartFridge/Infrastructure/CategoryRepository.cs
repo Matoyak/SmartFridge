@@ -4,17 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SmartFridge.Infrastructure
-{
-    public class CategoryRepository : GenericRepository<Category>
-    {
-        CategoryRepository(ApplicationDbContext db) : base(db) { }
+namespace SmartFridge.Infrastructure {
+    public class CategoryRepository : GenericRepository<Category> {
+        public CategoryRepository(ApplicationDbContext db) : base(db) { }
 
-        public IQueryable<Category> AddCategoryNames(ICollection<string> categories)
-        {
+        public IQueryable<Category> GetCategories(IEnumerable<string> categories) {
             return from c in _db.Categories
-                   where c.ItemCategories == categories
-                    select c;
+                   where categories.Contains(c.Name)
+                   select c;
         }
     }
 }
