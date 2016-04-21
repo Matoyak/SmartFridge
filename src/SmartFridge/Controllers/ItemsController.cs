@@ -21,7 +21,8 @@ namespace SmartFridge.Controllers {
         /// </summary>
         /// <returns>List of all items</returns>
         [HttpGet]
-        public ICollection<ItemDTO> GetAllItems() {
+        public ICollection<ItemDTO> GetAllItems()
+        {
             return _itemServ.GetItemList();
         }
 
@@ -30,7 +31,8 @@ namespace SmartFridge.Controllers {
         /// </summary>
         /// <returns>Returns all items owned by the user.</returns>
         [HttpGet]
-        public ICollection<ItemDTO> GetItemsByUser() {
+        public ICollection<ItemDTO> GetItemsByUser()
+        {
             return _itemServ.GetItemListByUser(User.Identity.Name);
         }
 

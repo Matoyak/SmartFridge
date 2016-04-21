@@ -85,7 +85,7 @@ namespace SmartFridge.Controllers {
 
             this.newItem.categories = this.selectedCategories;
             console.log(this.newItem);
-            this.$http.post(`/api/Items`, this.newItem)
+            this.$http.post("/api/items", this.newItem)
                 .then((response) => {
                     console.log(response.data);
                 })
