@@ -50,7 +50,9 @@ namespace SmartFridge.Controllers {
         public selectedCategory;
         public selectedCategories = [];
         public foodCategories = ["Dairy", "Frozen", "Refrigerated", "Meat", "Vegetable", "Fruit", "Other"];
-        constructor(private $http: ng.IHttpService) { }
+        constructor(private $http: ng.IHttpService) {
+            // get categories
+        }
 
         postItem() {
             this.categories = this.selectedCategories;
@@ -67,9 +69,11 @@ namespace SmartFridge.Controllers {
                 })
         }
 
-        newCategory() {
-            this.selectedCategories.push({ name: this.selectedCategory });
+        newCategory(category, index) {
+            console.log(index);
+            this.selectedCategories.push({ name: category });
             console.log(this.selectedCategories);
+          
         }
     }
 
