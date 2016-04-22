@@ -1,6 +1,18 @@
-.practice {
-  background: orange;
-  text-align: center;
-  margin: 1px;
-  height: 20vh;
+header, main, .section, footer {
+      padding-left: 240px;
+    }
+
+    @media only screen and (max-width : 992px) {
+      header, main, .section, footer {
+        padding-left: 0;
+      }
+    }
+
+.nav-logo-1{
+   height:45px;
+   width:213px;
+}
+nav .brand-logo{
+  padding-left:45px;
+    padding-top:10px;
 }

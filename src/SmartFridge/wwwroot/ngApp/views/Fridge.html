@@ -1,25 +1,25 @@
-﻿<section id="portfolio">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2>Fridge</h2>
-        <hr class="star-primary">
+﻿  <!--<section id="portfolio">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2>Fridge</h2>
+          <hr class="star-primary">
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-4 portfolio-item">
-        <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-          <div class="caption">
-            <div class="caption-content">
-              <i class="fa fa-search-plus fa-3x"></i>
+      <div class="row">
+        <div class="col-sm-4 portfolio-item">
+          <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+            <div class="caption">
+              <div class="caption-content">
+                <i class="fa fa-search-plus fa-3x"></i>
+              </div>
             </div>
-          </div>
-          <img src="http://i1172.photobucket.com/albums/r573/Speedknotjenkins/Fridge/dairy_zpscelfj1su.png" class="img-responsive" alt="">
-        </a>
+            <img src="http://i1172.photobucket.com/albums/r573/Speedknotjenkins/Fridge/dairy_zpscelfj1su.png" class="img-responsive" alt="">
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>-->
 <!--<ul>
   <li ng-repeat="item in controller.fridgeItems">{{item}}</li>
 </ul>
@@ -28,27 +28,27 @@
 </ul>-->
 
 
-<div>
-    <pre>Sorting predicate = {{controller.predicate}}, reverse = {{controller.reverse}}</pre>
-    <table class="item">
-        <tr>
-            <th>
-                <button ng-click="order('name')">Name</button>
-                <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
-            </th>
-            <th>
-                <button ng-click="order('exp')">Expire Date</button>
-                <span class="sortorder" ng-show="predicate === 'exp'" ng-class="{reverse:reverse}"></span>
-            </th>
-            <th>
-                <button ng-click="order('category')">Category</button>
-                <span class="sortorder" ng-show="predicate === 'category'" ng-class="{reverse:reverse}"></span>
-            </th>
-        </tr>
-        <tr ng-repeat="item in controller.testItems | orderBy:predicate:reverse">
-            <td>{{item.name}}</td>
-            <td>{{item.expDate}}</td>
-            <td>{{item.category}}</td>
-        </tr>
-    </table>
-</div>
+  <!--<div>
+      <pre>Sorting predicate = {{controller.predicate}}, reverse = {{controller.reverse}}</pre>
+      <table class="item">
+          <tr>
+              <th>
+                  <button ng-click="order('name')">Name</button>
+                  <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
+              </th>
+              <th>
+                  <button ng-click="order('exp')">Expire Date</button>
+                  <span class="sortorder" ng-show="predicate === 'exp'" ng-class="{reverse:reverse}"></span>
+              </th>
+              <th>
+                  <button ng-click="order('category')">Category</button>
+                  <span class="sortorder" ng-show="predicate === 'category'" ng-class="{reverse:reverse}"></span>
+              </th>
+          </tr>
+          <tr ng-repeat="item in controller.testItems | orderBy:predicate:reverse">
+              <td>{{item.name}}</td>
+              <td>{{item.expDate}}</td>
+              <td>{{item.category}}</td>
+          </tr>
+      </table>
+  </div>-->
