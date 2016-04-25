@@ -1,0 +1,43 @@
+﻿
+  <div class="row">
+    <div class="col s10">
+      <!--<pre>Sorting predicate = {{controller.predicate}}, reverse = {{controller.reverse}}</pre>-->
+
+      <table class="item">
+        <tr>
+          <th>
+            <button class="btn-flat" ng-click="controller.order('name')">Name</button>
+            <span class="sortorder" ng-show="controller.predicate === 'name'" ng-class="{reverse:reverse}"></span>
+          </th>
+          <th>
+            <button class="btn-flat" ng-click="controller.order('exp')">Expire Date</button>
+            <span class="sortorder" ng-show="controller.predicate === 'exp'" ng-class="{reverse:reverse}"></span>
+          </th>
+          <th>
+            <button class="btn-flat" ng-click="controller.order('category')">Category</button>
+            <span class="sortorder" ng-show="controller.predicate === 'category'" ng-class="{reverse:reverse}"></span>
+          </th>
+        </tr>
+        <tr ng-repeat="item in controller.fridgeItems | orderBy:controller.predicate:controller.reverse">
+          <td>{{item.name}}</td>
+          <td>{{item.expDate | date}}</td>
+          <td><ul><li ng-repeat="category in item.categories">{{category.name}}</li></ul></td>
+          <td><button class="btn" ng-click="controller.openModal(item)">open</button></td>
+        </tr>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col s2 pull-right">
+        <h5>{{controller.selectedItem.name}}</h5>
+        <br />
+        <h5>Expires: </h5>
+        <p>{{controller.selectedItem.expDate | date}}</p>
+        <br />
+        <h5>Date Added:</h5>
+        <p>{{controller.selectedItem.addedDate | date}}</p>
+        <br />
+        <h5>Categories: </h5>
+        <p ng-repeat="category in controller.selectedItem.categories">{{category.name}}</p>
+      </div>
+    </div>
+  </div>

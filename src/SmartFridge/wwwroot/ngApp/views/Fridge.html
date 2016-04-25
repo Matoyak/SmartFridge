@@ -1,5 +1,5 @@
 ﻿
-
+<a href="/simpleFridge">load basic view</a>
   <div>
       <!--<pre>Sorting predicate = {{controller.predicate}}, reverse = {{controller.reverse}}</pre>-->
       <table class="item">
@@ -32,11 +32,11 @@
 <!-- Modal Structure -->
 <div id="demoModal" class="modal">
   <div class="modal-content">
-    <h3>{{controller.modalItem.name}}</h3>
-    <p><h5>Expires:</h5> {{controller.modalItem.expDate | date}}</p>
-    <p><h5>Date Added:</h5> {{controller.modalItem.addedDate | date}}</p>
+    <h3>{{controller.selectedItem.name}}</h3>
+    <p><h5>Expires:</h5> {{controller.selectedItem.expDate | date}}</p>
+    <p><h5>Date Added:</h5> {{controller.selectedItem.addedDate | date}}</p>
     <h5>Categories:</h5>
-    <p><ul><li ng-repeat="category in controller.modalItem.categories">{{category.name}}</li></ul></p>
+    <p><ul><li ng-repeat="category in controller.selectedItem.categories">{{category.name}}</li></ul></p>
   </div>
   <div class="modal-footer">
     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cool beans</a>
