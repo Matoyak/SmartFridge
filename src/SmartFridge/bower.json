@@ -12,6 +12,12 @@
     "angular-ui-router": "0.2.18",
     "materialize": "^0.97.6",
     "angular-materialize": "^0.1.4",
-    "font-awesome": "^4.5.0"
+    "font-awesome": "^4.5.0",
+    "moment": "^2.13.0",
+    "angular-moment": "^0.10.3"
+  },
+  "resolutions": {
+    "angular": "1.5.5",
+    "moment": "2.13.0"
   }
 }
