@@ -139,7 +139,7 @@ namespace SmartFridge
 
 
             // initialize sample data
-            SampleData.Initialize(app.ApplicationServices).Wait();
+            //SampleData.Initialize(app.ApplicationServices).Wait();
 
         }
 
