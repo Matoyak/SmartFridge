@@ -18,7 +18,7 @@ namespace SmartFridge.Services {
         }
 
         /// <summary>
-        /// Use only for testing purposes, in actual code user GetItemListByUser()
+        /// Use only for testing purposes, in actual code use GetItemListByUser()
         /// </summary>
         /// <returns>Returns a Collection of all items in the database.</returns>
         public ICollection<ItemDTO> GetItemList() {
@@ -35,6 +35,11 @@ namespace SmartFridge.Services {
                     }).ToList();
         }
 
+        /// <summary>
+        /// Gets the list of items belonging to a specific user.
+        /// </summary>
+        /// <param name="currUser">The currently logged in user.</param>
+        /// <returns>Returns a collection of ItemDTOs owned by the user.</returns>
         public ICollection<ItemDTO> GetItemListByUser(string currUser) {
             return (from i in _itemRepo.GetItemsByUsername(currUser)
                     select new ItemDTO() {
@@ -86,6 +91,11 @@ namespace SmartFridge.Services {
             _itemRepo.SaveChanges();
         }
 
+        /// <summary>
+        /// Service to delete an item from the list.
+        /// </summary>
+        /// <param name="id">The id of the item to delete</param>
+        /// <returns>Returns true if things worked properly.</returns>
         public bool DeleteItem(int id) {
             bool check = _itemRepo.Delete(id);
             if(!check) {
