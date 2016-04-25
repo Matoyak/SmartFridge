@@ -28,3 +28,10 @@ nav .brand-logo{
 .socIcon:hover, :focus{
   color:#ffd600;
 }
+
+.sortorder:after {
+  content: '\25b2';
+}
+.sortorder.reverse:after {
+  content: '\25bc';
+}

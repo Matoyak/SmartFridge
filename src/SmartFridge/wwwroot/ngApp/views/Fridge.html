@@ -6,15 +6,15 @@
           <tr>
               <th>
                   <button class="btn-flat" ng-click="controller.order('name')">Name</button>
-                  <span class="sortorder" ng-show="controller.predicate === 'name'" ng-class="{reverse:reverse}"></span>
+                  <span class="sortorder" ng-show="controller.predicate === 'name'" ng-class="{reverse:controller.reverse}"></span>
               </th>
               <th>
                   <button class="btn-flat" ng-click="controller.order('exp')">Expire Date</button>
-                  <span class="sortorder" ng-show="controller.predicate === 'exp'" ng-class="{reverse:reverse}"></span>
+                  <span class="sortorder" ng-show="controller.predicate === 'exp'" ng-class="{reverse:controller.reverse}"></span>
               </th>
               <th>
                   <button class="btn-flat" ng-click="controller.order('category')">Category</button>
-                  <span class="sortorder" ng-show="controller.predicate === 'category'" ng-class="{reverse:reverse}"></span>
+                  <span class="sortorder" ng-show="controller.predicate === 'category'" ng-class="{reverse:controller.reverse}"></span>
               </th>
           </tr>
           <tr ng-repeat="item in controller.fridgeItems | orderBy:controller.predicate:controller.reverse" >
