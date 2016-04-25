@@ -17,7 +17,7 @@ namespace SmartFridge.Controllers {
 
     export class ViewFridgeController {
 
-        public modalItem;
+        public selectedItem;
         public fridgeItems;
         public predicate;
         public reverse;
@@ -33,7 +33,7 @@ namespace SmartFridge.Controllers {
         }
         openModal(selectedItem) {
             console.log(`item: ${selectedItem.name}`);
-            this.modalItem = selectedItem;
+            this.selectedItem = selectedItem;
         }
 
         public order(property) {
@@ -53,7 +53,7 @@ namespace SmartFridge.Controllers {
         public categories;
         public selectedCategory;
         public selectedCategories: any = [];
-        public foodCategories = ["Dairy", "Frozen", "Refrigerated", "Meat", "Vegetable", "Fruit", "Other"];
+        public foodCategories = ["Dairy", "Frozen", "Refrigerated", "Protein", "Vegetable", "Fruit", "Other"];
 
         constructor(private $http: ng.IHttpService) {
             // get categories
@@ -74,6 +74,10 @@ namespace SmartFridge.Controllers {
                 })
         }
         toggleItem(category: string, index) {
+            console.log(category);
+            console.log(index);
+            //this will work when { name: category } is properly chekced for in the if statement
+
             let idx = this.selectedCategories.indexOf(category)
             if (idx >= 0) {
                 this.selectedCategories.splice(idx, 1);
@@ -81,6 +85,7 @@ namespace SmartFridge.Controllers {
             else {
                 this.selectedCategories.push({ name: category });
             }
+            console.log(this.selectedCategories);
         }
         seeDate() {
             console.log(this.expDate);

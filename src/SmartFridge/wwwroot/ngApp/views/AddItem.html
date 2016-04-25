@@ -16,14 +16,18 @@
       <div class="row">
         <div class="col s5">
           <div class="chip" id="{{$index}}" ng-repeat="category in controller.selectedCategories" ng-click="controller.toggleItem(category, $index)">
-            <span>{{category.name}}</span>
+            <span>{{category}}</span>
             
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col s6">
-          <button type="submit" class="btn btn-success btn-lg" ng-click="controller.postItem()" ng-disabled="myForm.item.$invalid || myForm.date.$invalid || myForm.category.$invalid">Add my item!</button>
+          <button type="submit" class="btn btn-success btn-lg" 
+                  ng-click="controller.postItem()" 
+                  ng-disabled="myForm.item.$invalid || myForm.date.$invalid || myForm.category.$invalid">
+            Add my item!
+          </button>
         </div>
       </div>
     </div>
