@@ -43,6 +43,12 @@ namespace SmartFridge {
                 controller: SmartFridge.Controllers.ViewFridgeController,
                 controllerAs: 'controller'
             })
+            .state('simpleFridge', {
+                url: '/simpleFridge',
+                templateUrl: '/ngApp/views/simpleFridge.html',
+                controller: SmartFridge.Controllers.ViewFridgeController,
+                controllerAs: 'controller'
+            })
             .state('addItem', {
                 url: '/addItem',
                 templateUrl: '/ngApp/views/AddItem.html',

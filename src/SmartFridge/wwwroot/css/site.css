@@ -32,6 +32,12 @@ nav .brand-logo {
     color: #ffd600;
   }
 
+.sortorder:after {
+  content: '\25b2';
+}
+.sortorder.reverse:after {
+  content: '\25bc';
+}
 .sideHeader {
   padding-top:15px;
 text-align:center;

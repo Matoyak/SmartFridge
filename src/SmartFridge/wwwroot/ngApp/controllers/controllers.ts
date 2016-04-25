@@ -17,7 +17,7 @@ namespace SmartFridge.Controllers {
 
     export class ViewFridgeController {
 
-
+        public selectedItem;
         public fridgeItems;
         public predicate;
         public reverse;
@@ -30,6 +30,10 @@ namespace SmartFridge.Controllers {
                 .catch((response) => {
                     console.log(response.data);
                 })
+        }
+        openModal(selectedItem) {
+            console.log(`item: ${selectedItem.name}`);
+            this.selectedItem = selectedItem;
         }
 
         public order(property) {
@@ -48,9 +52,9 @@ namespace SmartFridge.Controllers {
         public expDate;
         public categories;
         public selectedCategory;
-        public selectedCategories = [];
-        public foodCategories = ["Dairy", "Frozen", "Refrigerated", "Meat", "Vegetable", "Fruit", "Other"];
-       
+        public selectedCategories: any = [];
+        public foodCategories = ["Dairy", "Frozen", "Refrigerated", "Protein", "Vegetable", "Fruit", "Other"];
+
         constructor(private $http: ng.IHttpService) {
             // get categories
         }
@@ -69,6 +73,20 @@ namespace SmartFridge.Controllers {
                     console.log(response.data);
                 })
         }
+        toggleItem(category: string, index) {
+            console.log(category);
+            console.log(index);
+            //this will work when { name: category } is properly chekced for in the if statement
+
+            let idx = this.selectedCategories.indexOf(category)
+            if (idx >= 0) {
+                this.selectedCategories.splice(idx, 1);
+            }
+            else {
+                this.selectedCategories.push({ name: category });
+            }
+            console.log(this.selectedCategories);
+        }
         seeDate() {
             console.log(this.expDate);
         }
@@ -76,7 +94,7 @@ namespace SmartFridge.Controllers {
             console.log(index);
             this.selectedCategories.push({ name: category });
             console.log(this.selectedCategories);
-          
+
         }
     }
 
