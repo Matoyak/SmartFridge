@@ -1,31 +1,47 @@
 header, main, .section, footer {
-      padding-left: 240px;
-    }
-
-    @media only screen and (max-width : 992px) {
-      header, main, .section, footer {
-        padding-left: 0;
-      }
-    }
-
-.nav-logo-1{
-   height:45px;
-   width:213px;
+  padding-left: 240px;
 }
-nav .brand-logo{
-  padding-left:45px;
-    padding-top:10px;
+
+@media only screen and (max-width : 992px) {
+  header, main, .section, footer {
+    padding-left: 0;
+  }
 }
+
+.nav-logo-1 {
+  height: 45px;
+  width: 213px;
+}
+
+nav .brand-logo {
+  padding-left: 45px;
+  padding-top: 10px;
+}
+
 .socIcon {
-  color:#fff;
-  display:inline;
-  padding:10px;
+  color: #fff;
+  display: inline;
+  padding: 10px;
   width: 50px;
   height: 50px;
   font-size: 30px;
   line-height: 45px;
 }
-.socIcon:hover, :focus{
-  color:#ffd600;
+
+  .socIcon:hover, :focus {
+    color: #ffd600;
+  }
+
+.sideHeader {
+  padding-top:15px;
+text-align:center;
 }
 
+.sideItem {
+  font-size: 14px;
+}
+
+.sideItemFont {
+  padding-left: 25px;
+  transition: all 0.3s ease;
+}
