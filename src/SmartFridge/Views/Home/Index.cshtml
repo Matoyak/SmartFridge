@@ -6,8 +6,6 @@
     <title>SmartFridge</title>
     <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="~/css/fontsheetcss.css" rel="stylesheet" />
-    @*<link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">*@
     <link href="~/lib/materialize/dist/css/materialize.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
     <base href="/" />
@@ -19,24 +17,29 @@
             <ul class="right hide-on-med-and-down">
                 <li><a href="#">Login</a></li>
             </ul>
-            <ul id="nav-mobile" class="side-nav fixed">
-                <li><a href="#">Navbar Link</a></li>
-            </ul>
+
+      <div id="nav-mobile" class="side-nav fixed green lighten-4">
+        <div class="sideHeader">
+          <div>
+        <img class="sidePic" src="~/images/apple.png" />
+          </div>
+        </div>
+        <div class="sideItems">
+          <div><a class="sideItem" href="#"><i class="fa fa-sign-in" ></i><span class="sideItemFont">Login</span></a></div>
+          <div><a class="sideItem" href=""><i class="fa fa-plus" ></i><span class="sideItemFont">Add</span></a></div>
+          <div><a class="sideItem" href=""><i class="fa fa-list" ></i><span class="sideItemFont">View All</span></a></div>
+          <div><a class="sideItem" href=""><i class="fa fa-calendar" ></i><span class="sideItemFont">Expired</span></a></div>
+        </div>
+      </div>
+
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
     </nav>
     <div class="section no-pad-bot" id="index-banner">
         <div class="container">
             <br><br>
+
             <ui-view></ui-view>
-            @*the following code could be used on a "home" view?*@
-            @*<span class="header center"><img src="~/images/kitchen.png" /></span>
-                <div class="row center">
-                  <h5 class="header col s12 light">Never let food spoil with Smart Fridge!</h5>
-                </div>
-                <div class="row center">
-                  <a href="#" id="download-button" class="btn waves-effect waves-light  green darken-4">Sign Up</a>
-                </div>*@
 
             <br><br>
         </div>
