@@ -73,12 +73,12 @@ namespace SmartFridge.Controllers {
                     console.log(response.data);
                 })
         }
-        toggleItem(category: string, index) {
-            console.log(category);
-            console.log(index);
+        toggleItem(category) {
+            console.log(`category:${category}`);
             //this will work when { name: category } is properly chekced for in the if statement
 
-            let idx = this.selectedCategories.indexOf(category)
+            let idx = this.selectedCategories.indexOf(category);
+            console.log(`idx:${idx}`);
             if (idx >= 0) {
                 this.selectedCategories.splice(idx, 1);
             }
