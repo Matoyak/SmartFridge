@@ -22,6 +22,8 @@ namespace SmartFridge.Controllers {
         public predicate;
         public reverse;
 
+
+
         constructor(private $http: ng.IHttpService) {
             $http.get('/api/Items')
                 .then((response) => {
@@ -31,11 +33,12 @@ namespace SmartFridge.Controllers {
                     console.log(response.data);
                 })
         }
-        openModal(selectedItem) {
+
+        public openModal(selectedItem) {
             console.log(`item: ${selectedItem.name}`);
             this.selectedItem = selectedItem;
         }
-
+        // Orderby method to orderby any of the property...........
         public order(property) {
             if (property === this.predicate) {
                 this.reverse = !this.reverse;
@@ -45,6 +48,7 @@ namespace SmartFridge.Controllers {
                 this.reverse = false;
             }
         }
+
     }
 
     export class AddItemController {
