@@ -22,9 +22,8 @@ namespace SmartFridge.Controllers {
         public predicate;
         public reverse;
 
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
 
-
-        constructor(private $http: ng.IHttpService) {
             $http.get('/api/Items')
                 .then((response) => {
                     this.fridgeItems = response.data;
@@ -33,9 +32,19 @@ namespace SmartFridge.Controllers {
                     console.log(response.data);
                 })
         }
-
+        deleteItem(itemToGo) {
+            console.log(itemToGo);
+            let item = this.selectedItem;
+            //this.$http.delete(`/api/delete`, item)
+            //    .then((response) => {
+            //        console.log(response);
+            //        this.$state.go('myFridge');
+            //    })
+            //    .catch((response) => {
+            //        console.log(response);
+            //    })
+        }
         public openModal(selectedItem) {
-            console.log(`item: ${selectedItem.name}`);
             this.selectedItem = selectedItem;
         }
         // Orderby method to orderby any of the property...........
@@ -54,7 +63,7 @@ namespace SmartFridge.Controllers {
     export class AddItemController {
         public name;
         public expDate;
-        public categories;
+        public categories = [];
         public selectedCategory;
         public selectedCategories: any = [];
         public foodCategories = ["Dairy", "Frozen", "Refrigerated", "Protein", "Vegetable", "Fruit", "Other"];
@@ -62,13 +71,14 @@ namespace SmartFridge.Controllers {
         constructor(private $http: ng.IHttpService) {
             // get categories
         }
-
         postItem() {
-            this.categories = this.selectedCategories;
+            this.selectedCategories.forEach((category) => {
+                this.categories.push({ name: category })
+            });
             this.$http.post("/api/items", {
                 name: this.name,
                 expDate: this.expDate,
-                categories: this.selectedCategories //may need to add value: 0 in case post fails.
+                categories: this.categories //may need to add value: 0 in case post fails.
             })
                 .then(response => {
                     console.log(response.data);
@@ -77,29 +87,15 @@ namespace SmartFridge.Controllers {
                     console.log(response.data);
                 })
         }
-        toggleItem(category: string, index) {
-            console.log(category);
-            console.log(index);
-            //this will work when { name: category } is properly chekced for in the if statement
 
-            let idx = this.selectedCategories.indexOf(category)
+        toggleItem(category) {
+            let idx = this.selectedCategories.indexOf(category);
             if (idx >= 0) {
                 this.selectedCategories.splice(idx, 1);
             }
             else {
-                this.selectedCategories.push({ name: category });
-            }
-            console.log(this.selectedCategories);
-        }
-        seeDate() {
-            console.log(this.expDate);
-        }
-        newCategory(category, index) {
-            console.log(index);
-            this.selectedCategories.push({ name: category });
-            console.log(this.selectedCategories);
-
+                this.selectedCategories.push(category);
+            }            
         }
     }
-
 }

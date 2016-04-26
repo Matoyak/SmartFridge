@@ -35,7 +35,7 @@
       <div class="row">
         <div class="input-field col s5">
           <ul id="{{$index}}" ng-repeat="category in controller.foodCategories">
-            <li><input type="button" id="{{$index}}" message="Added: {{category}}" duration="500" toast='click' class="btn" ng-click="controller.toggleItem(category, $index)" name="category" value="{{category}}" required/></li>
+            <li><input type="button" id="{{$index}}" message="Added: {{category}}" duration="500" toast='click' class="btn" ng-click="controller.toggleItem(category)" name="category" value="{{category}}" required/></li>
            
           </ul>
         </div>
