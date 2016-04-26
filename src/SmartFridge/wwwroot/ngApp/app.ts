@@ -1,6 +1,6 @@
 namespace SmartFridge {
 
-    angular.module('SmartFridge', ['ui.router', 'ngResource', 'ui.materialize']).config((
+    angular.module('SmartFridge', ['ui.router', 'ngResource', 'ui.materialize', 'angularMoment']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider
@@ -91,7 +91,4 @@ namespace SmartFridge {
     angular.module('SmartFridge').config(function ($httpProvider) {
         $httpProvider.interceptors.push('authInterceptor');
     });
-
-
-
 }

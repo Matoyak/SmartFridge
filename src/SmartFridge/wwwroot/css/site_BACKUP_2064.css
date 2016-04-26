@@ -24,7 +24,7 @@ nav .brand-logo {
   padding: 10px;
   width: 50px;
   height: 50px;
-  font-size: 24px;
+  font-size: 30px;
   line-height: 45px;
 }
 
@@ -32,12 +32,6 @@ nav .brand-logo {
     color: #ffd600;
   }
 
-.sortorder:after {
-  content: '\25b2';
-}
-.sortorder.reverse:after {
-  content: '\25bc';
-}
 .sideHeader {
   padding-top:15px;
 text-align:center;
@@ -47,7 +41,15 @@ text-align:center;
   font-size: 14px;
 }
 
+<<<<<<< HEAD
 .sideItemFont {
   padding-left: 25px;
   transition: all 0.3s ease;
+=======
+.sortorder:after {
+  content: '\25b2';
+}
+.sortorder.reverse:after {
+  content: '\25bc';
+>>>>>>> 9fc21455366b71e06cf30e1a289ed08188624750
 }

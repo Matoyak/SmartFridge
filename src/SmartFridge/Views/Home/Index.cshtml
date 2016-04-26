@@ -1,22 +1,22 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="SmartFridge">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-  <title>SmartFridge</title>
-  <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link href="~/css/fontsheetcss.css" rel="stylesheet" />
-  <link href="~/lib/materialize/dist/css/materialize.css" rel="stylesheet" />
-  <link href="~/css/site.css" rel="stylesheet" />
-  <base href="/" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>SmartFridge</title>
+    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/fontsheetcss.css" rel="stylesheet" />
+    <link href="~/lib/materialize/dist/css/materialize.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <base href="/" />
 </head>
 <body>
-  <nav class="green lighten-1" role="navigation">
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo"><img class="nav-logo-1" src="~/images/smFr.png" /></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Login</a></li>
-      </ul>
+    <nav class="green lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo"><img class="nav-logo-1" src="~/images/smFr.png" /></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#">Login</a></li>
+            </ul>
 
       <div id="nav-mobile" class="side-nav fixed green lighten-4">
         <div class="sideHeader">
@@ -32,104 +32,106 @@
         </div>
       </div>
 
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <br><br>
+
+            <ui-view></ui-view>
+
+            <br><br>
+        </div>
     </div>
-  </nav>
-  <div class="section no-pad-bot" id="index-banner">
+
     <div class="container">
-      <br><br />
-
-      <ui-view></ui-view>
-
-      <br><br>
+        <div class="section">
+            <!--   Icon Section   -->
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center"><i class="fa fa-globe" aria-hidden="true"></i></h2>
+                        <h5 class="center">Worldwide</h5>
+                        <p class="light">The amount of food lost and wasted every year is equal to more than half of the world&rsquo;s annual cereals crops (2.3 billion tons in 2009)</p>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center"><i class="fa fa-map-marker" aria-hidden="true"></i></h2>
+                        <h5 class="center">USA</h5>
+                        <p class="light">In the USA, 30-40% of the food supply is wasted, equaling more than 20 pounds of food per person per month.</p>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center"><i class="fa fa-users" aria-hidden="true"></i></h2>
+                        <h5 class="center">What you can do?</h5>
+                        <p class="light">Wasting food is often a subconscious act &#45; become aware of how much food you throw away. Save your food, save your money and save the environment. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="section">
+        </div>
     </div>
-  </div>
+    <footer class="page-footer green">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">About</h5>
+                    <p class="grey-text text-lighten-4 ">
+                        This program is easy to use and tracks the expiration dates on food.
+                        Smart Fridge will notify you when your food item is about to expire.
+                        Let Smart Fridge help you play a role in saving the enviorment without wasting food.
+                    </p>
+                </div>
+                <div class="col l3 s12">
+                    <!--space-->
+                    <p></p>
+                </div>
 
-  <div class="container">
-    <div class="section">
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center"><i class="fa fa-globe" aria-hidden="true"></i></h2>
-            <h5 class="center">Worldwide</h5>
-            <p class="light">The amount of food lost and wasted every year is equal to more than half of the world&rsquo;s annual cereals crops (2.3 billion tons in 2009)</p>
-          </div>
+                <div class="nav col l3 s12">
+                    <ul>
+                        <li>
+              <a class="socIcon" href="#"><i class="fa fa-facebook"></i></a>
+              <a class="socIcon" href="#"><i class="fa fa-twitter"></i></a>
+              <a class="socIcon" href="#"><i class="fa fa-linkedin"></i></a>
+              <a class="socIcon" href="#"><i class="fa fa-google-plus"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center"><i class="fa fa-map-marker" aria-hidden="true"></i></h2>
-            <h5 class="center">USA</h5>
-            <p class="light">In the USA, 30-40% of the food supply is wasted, equaling more than 20 pounds of food per person per month.</p>
-          </div>
+        <div class="footer-copyright">
+            <div class="container center">
+                Made by <a class="yellow-text text-accent-4" href="#">Team Code Troopers</a>
+            </div>
         </div>
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center"><i class="fa fa-users" aria-hidden="true"></i></h2>
-            <h5 class="center">What you can do?</h5>
-            <p class="light">Wasting food is often a subconscious act &#45; become aware of how much food you throw away. Save your food, save your money and save the environment. </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br><br>
-    <div class="section">
-    </div>
-  </div>
-  <footer class="page-footer green">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">About</h5>
-          <p class="grey-text text-lighten-4 ">
-            This program is easy to use and tracks the expiration dates on food.
-            Smart Fridge will notify you when your food item is about to expire.
-            Let Smart Fridge help you play a role in saving the enviorment without wasting food.
-          </p>
-        </div>
-        <div class="col l3 s12">
-          <!--space-->
-          <p></p>
-        </div>
+    </footer>
 
-        <div class="nav col l3 s12">
-          <ul>
-            <li>
-              <a class="socIcon" href="#!"><i class="fa fa-facebook"></i></a>
-              <a class="socIcon" href="#!"><i class="fa fa-twitter"></i></a>
-              <a class="socIcon" href="#!"><i class="fa fa-linkedin"></i></a>
-              <a class="socIcon" href="#!"><i class="fa fa-google-plus"></i></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container center">
-        Made by <a class="yellow-text text-accent-4" href="#">Team Code Troopers</a>
-      </div>
-    </div>
-  </footer>
+    <!-- Library Files -->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/materialize/dist/js/materialize.js"></script>
+    <script src="~/lib/materialize/dist/js/materialize.js"></script>
+    <script src="~/lib/angular/angular.js"></script>
+    <script src="~/lib/angular-resource/angular-resource.js"></script>
+    <script src="~/lib/angular-animate/angular-animate.js"></script>
+    <script src="~/lib/angular-touch/angular-touch.js"></script>
+    <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="~/lib/materialize/templates/starter-template/js/init.js"></script>
+    <script src="~/lib/angular-materialize/src/angular-materialize.js"></script>    
+    <script src="~/lib/moment/moment.js"></script>
+    <script src="~/lib/angular-moment/angular-moment.js"></script>
 
-  <!-- Library Files -->
-  <script src="~/lib/jquery/dist/jquery.js"></script>
-  <script src="~/lib/materialize/dist/js/materialize.js"></script>
-  <script src="~/lib/materialize/dist/js/materialize.js"></script>
-  <script src="~/lib/angular/angular.js"></script>
-  <script src="~/lib/angular-resource/angular-resource.js"></script>
-  <script src="~/lib/angular-animate/angular-animate.js"></script>
-  <script src="~/lib/angular-touch/angular-touch.js"></script>
-  <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="~/lib/materialize/templates/starter-template/js/init.js"></script>
-  <script src="~/lib/angular-materialize/src/angular-materialize.js"></script>
+    <!-- App Files-->
+    <script src="~/ngapp/app.js"></script>
+    <script src="~/ngapp/controllers/controllers.js"></script>
+    <script src="~/ngapp/services/services.js"></script>
 
-  <!-- App Files-->
-  <script src="~/ngapp/app.js"></script>
-  <script src="~/ngapp/controllers/controllers.js"></script>
-  <script src="~/ngapp/services/services.js"></script>
-
-  <!-- Security -->
-  <script src="~/ngapp/controllers/accountcontroller.js"></script>
-  <script src="~/ngapp/services/accountservice.js"></script>
+    <!-- Security -->
+    <script src="~/ngapp/controllers/accountcontroller.js"></script>
+    <script src="~/ngapp/services/accountservice.js"></script>
 </body>
 </html>

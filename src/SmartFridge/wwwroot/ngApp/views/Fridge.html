@@ -1,47 +1,51 @@
 ﻿
 <a href="/simpleFridge">load basic view</a>
-  <div>
-      <!--<pre>Sorting predicate = {{controller.predicate}}, reverse = {{controller.reverse}}</pre>-->
-      <table class="item">
-          <tr>
-              <th>
-                  <button class="btn-flat" ng-click="controller.order('name')">Name</button>
-                  <span class="sortorder" ng-show="controller.predicate === 'name'" ng-class="{reverse:controller.reverse}"></span>
-              </th>
-              <th>
-                  <button class="btn-flat" ng-click="controller.order('exp')">Expire Date</button>
-                  <span class="sortorder" ng-show="controller.predicate === 'exp'" ng-class="{reverse:controller.reverse}"></span>
-              </th>
-              <th>
-                  <button class="btn-flat" ng-click="controller.order('category')">Category</button>
-                  <span class="sortorder" ng-show="controller.predicate === 'category'" ng-class="{reverse:controller.reverse}"></span>
-              </th>
-          </tr>
-          <tr ng-repeat="item in controller.fridgeItems | orderBy:controller.predicate:controller.reverse" >
-              <td >{{item.name}}</td>
-              <td>{{item.expDate | date}}</td>
-              <td><ul><li ng-repeat="category in item.categories">{{category.name}}</li></ul></td>
+<div>
+    <!--<pre>Sorting predicate = {{controller.predicate}}, reverse = {{controller.reverse}}</pre>-->
+    <table class="item">
+        <tr>
+            <th>
+                <button class="btn-flat" ng-click="controller.order('name')">Name</button>
+                <span class="sortorder" ng-show="controller.predicate === 'name'" ng-class="{reverse:controller.reverse}"></span>
+            </th>
+            <th>
+                <button class="btn-flat" ng-click="controller.order('exp')">Expire Date</button>
+                <span class="sortorder" ng-show="controller.predicate === 'exp'" ng-class="{reverse:controller.reverse}"></span>
+            </th>
+            <th>
+                <button class="btn-flat" ng-click="controller.order('category')">Category</button>
+                <span class="sortorder" ng-show="controller.predicate === 'category'" ng-class="{reverse:controller.reverse}"></span>
+            </th>
+            <th>
+                <button class="btn-flat" ng-click="controller.order('daysLeft')">Days Left</button>
+                <span class="sortorder" ng-show="controller.predicate === 'daysLeft'" ng-class="{reverse:controller.reverse}"></span>
+            </th>
+        </tr>
+        <tr ng-repeat="item in controller.fridgeItems | orderBy:controller.predicate:controller.reverse">
+            <td>{{item.name}}</td>
+            <td>{{item.expDate | date}}</td>
+            <td><ul><li ng-repeat="category in item.categories">{{category.name}}</li></ul></td>
+            <td>{{item.expDate | amDifference : null : 'days'}}</td>
+
             <td><button class="btn" ng-click="controller.openModal(item)" href='#demoModal' modal>open</button></td>
-          </tr>
-      </table>
-  </div>
+        </tr>
+    </table>
+</div>
 
 {{controller.fridgeItems}}
-
-
 <!-- Modal Structure -->
 <div id="demoModal" class="modal">
-  <div class="modal-content">
-    <h3>{{controller.selectedItem.name}}</h3>
-    <p><h5>Expires:</h5> {{controller.selectedItem.expDate | date}}</p>
-    <p><h5>Date Added:</h5> {{controller.selectedItem.addedDate | date}}</p>
-    <h5>Categories:</h5>
-    <p><ul><li ng-repeat="category in controller.selectedItem.categories">{{category.name}}</li></ul></p>
-  </div>
-  <div class="modal-footer">
+    <div class="modal-content">
+        <h3>{{controller.selectedItem.name}}</h3>
+        <p><h5>Expires:</h5> {{controller.selectedItem.expDate | date}}</p>
+        <p><h5>Date Added:</h5> {{controller.selectedItem.addedDate | date}}</p>
+        <h5>Categories:</h5>
+        <p><ul><li ng-repeat="category in controller.selectedItem.categories">{{category.name}}</li></ul></p>
+    </div>
+    <div class="modal-footer">
     
     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     <a href="#!" class="modal-action waves-effect waves-green btn-flat left" ng-click="controller.deleteItem(controller.selectedItem)">Delete Item</a>
-  </div>
+    </div>
 </div>
 
