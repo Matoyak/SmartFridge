@@ -26,7 +26,7 @@
       </table>
   </div>
 
-
+{{controller.fridgeItems}}
 
 
 <!-- Modal Structure -->
@@ -39,7 +39,9 @@
     <p><ul><li ng-repeat="category in controller.selectedItem.categories">{{category.name}}</li></ul></p>
   </div>
   <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cool beans</a>
+    
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    <a href="#!" class="modal-action waves-effect waves-green btn-flat left" ng-click="controller.deleteItem(controller.selectedItem)">Delete Item</a>
   </div>
 </div>
 
