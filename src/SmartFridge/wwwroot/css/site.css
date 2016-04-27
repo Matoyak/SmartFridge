@@ -1,4 +1,4 @@
-header, main, .section, footer {
+/*header, main, .section, footer {
   padding-left: 240px;
 }
 
@@ -6,6 +6,10 @@ header, main, .section, footer {
   header, main, .section, footer {
     padding-left: 0;
   }
+}*/
+
+a:focus{
+  color: #004d40;
 }
 
 .nav-logo-1 {
@@ -40,7 +44,7 @@ nav .brand-logo {
 }
 .sideHeader {
   padding-top:15px;
-text-align:center;
+  text-align:center;
 }
 
 .sideItem {
