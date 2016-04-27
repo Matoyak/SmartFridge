@@ -7,8 +7,13 @@
     padding-left: 0;
   }
 }*/
+.active{
 
+}
 a:focus{
+  color: #000;
+}
+#item_name{
   color: #004d40;
 }
 
