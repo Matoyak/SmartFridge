@@ -51,7 +51,7 @@ text-align:center;
   padding-left: 25px;
   transition: all 0.3s ease;
 }
-.container {
+/*.container {
   border: 1px solid;
 }
 .row {
@@ -59,4 +59,7 @@ text-align:center;
 }
 .col {
   border: 1px solid blue;
-}
+}*/
+/*.card {
+  height: 25vh;
+}*/
