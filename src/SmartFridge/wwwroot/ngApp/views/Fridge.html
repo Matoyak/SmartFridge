@@ -31,7 +31,7 @@
   <!--<form ng-submit="controller.deleteItem(item)">-->
     <div class="row">
       <!--<form ng-submit="controller.deleteItem(item)">-->
-      <div class="col s12 m4" ng-repeat="item in controller.fridgeItems |  orderBy:controller.predicate:controller.reverse | filter:model">
+      <div class="col s12 m4" ng-animate="'animate'" ng-repeat="item in controller.fridgeItems |  orderBy:controller.predicate:controller.reverse | filter:model">
         <div class="card shadow-{{controller.getColor(item.expDate)}}">
           <div class="card-image">
             <img class="activator" src="../../images/fruits.png" />
