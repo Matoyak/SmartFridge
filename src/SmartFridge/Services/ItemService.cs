@@ -97,13 +97,33 @@ namespace SmartFridge.Services {
         /// </summary>
         /// <param name="id">The id of the item to delete</param>
         /// <returns>Returns true if things worked properly.</returns>
-        public bool DeleteItem(int id) {
-            bool check = _itemRepo.Delete(id);
-            if(!check) {
-                return false;
+        public bool DeleteItem(ItemDTO itemFromFront, string currUser) {
+            //convert to an Item //is this needed?
+            //check if the item name and added date are the same in the database
+            Item itemToDelete = new Item {
+                Name = itemFromFront.Name,
+                AddedDate = itemFromFront.AddedDate,
+                Barcode = itemFromFront.Barcode,
+                ExpDate = itemFromFront.ExpDate,
+                IsExpired = itemFromFront.IsExpired,
+                User = (_userRepo.FindByUserName(currUser).FirstOrDefault())
+            };
+
+            List<Item> items = _itemRepo.GetItemsByUsername(currUser).ToList();
+            foreach(Item item in items) {
+                string name = _itemRepo.GetItemByName(itemFromFront.Name).FirstOrDefault().Name;
+                DateTime addedDate = _itemRepo.GetItemByAddedDate(itemFromFront.AddedDate).FirstOrDefault().AddedDate;
+                if(itemFromFront.Name == name && itemFromFront.AddedDate == addedDate) {
+                    itemToDelete = _itemRepo.GetItemByAddedDate(itemFromFront.AddedDate).FirstOrDefault();
+                    bool check = _itemRepo.Delete(itemToDelete.Id);
+                    if(!check) {
+                        return false;
+                    }
+                    _itemRepo.SaveChanges();
+                    return true;
+                }
             }
-            _itemRepo.SaveChanges();
-            return true;
+            return false;
         }
     }
 }

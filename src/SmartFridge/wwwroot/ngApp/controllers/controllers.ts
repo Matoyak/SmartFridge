@@ -30,12 +30,15 @@ namespace SmartFridge.Controllers {
                     console.log(response.data);
                 })
         }
-        deleteItem(itemToGo) {
+
+        public deleteItem(itemToGo) {
             console.log(itemToGo);
-            this.$http.delete(`/api/delete`, itemToGo)
+
+            this.$http.post(`/api/Items/delete`, itemToGo)
                 .then((response) => {
                     console.log(response);
-                    this.$state.go('myFridge');
+                    //refresh current state (for use when reloading same state)
+                    this.$state.go(this.$state.current, {}, {reload: true});
                 })
                 .catch((response) => {
                     console.log(response);
