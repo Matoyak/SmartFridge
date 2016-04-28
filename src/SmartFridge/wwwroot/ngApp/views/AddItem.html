@@ -7,7 +7,8 @@
       <div class="col s7">
         <div class="row">
           <div class="input-field col s7">
-            <input id="item_name" name="item" type="text" class="validate"
+            <input id="item_name" name="item" type="text" 
+                   class="validate grey-text text-darken-4"
                    ng-model="controller.name" required>
             <label for="item_name">Your new fridge item</label>
           </div>
@@ -29,7 +30,7 @@
         </div>
         <div class="row">
           <div class="col s6">
-            <input type="submit" class="btn btn-success btn-lg"
+            <input type="submit" class="btn btn-success btn-lg  white-text"                
                    ng-disabled="myForm.item.$invalid || myForm.date.$invalid || myForm.category.$invalid"
                    value="Add my item!" />
           </div>
@@ -41,7 +42,7 @@
             <ul id="{{$index}}" ng-repeat="category in controller.foodCategories">
               <li>
                 <input type="button" id="{{$index}}" message="Added: {{category}}"
-                       duration="500" toast='click' class="btn"
+                       duration="500" toast='click' class="btn white-text"
                        ng-click="controller.toggleItem(category)" name="category"
                        value="{{category}}" required />
               </li>
