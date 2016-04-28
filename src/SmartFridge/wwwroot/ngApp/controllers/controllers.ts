@@ -21,7 +21,7 @@ namespace SmartFridge.Controllers {
         public fridgeItems;
         public predicate;
         public reverse;
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $filter) {
 
             $http.get('/api/Items')
                 .then((response) => {
@@ -31,22 +31,36 @@ namespace SmartFridge.Controllers {
                     console.log(response.data);
                 })
         }
-        deleteItem(itemToGo) {
+
+        public deleteItem(itemToGo) {
             console.log(itemToGo);
-            let item = this.selectedItem;
-            //this.$http.delete(`/api/delete`, item)
-            //    .then((response) => {
-            //        console.log(response);
-            //        this.$state.go('myFridge');
-            //    })
-            //    .catch((response) => {
-            //        console.log(response);
-            //    })
-        }
-        public openModal(selectedItem) {
-            this.selectedItem = selectedItem;
+            
+            this.$http.delete(`/api/delete`, itemToGo)
+                .then((response) => {
+                    console.log(response);
+                    this.$state.go('myFridge');
+                })
+                .catch((response) => {
+                    console.log(response);
+                })
         }
 
+        getColor(daysLeft) {
+            daysLeft = this.$filter('amDifference')(daysLeft, null, 'days');
+
+            if (daysLeft <= 0) {
+                return 'red';
+            }
+
+            switch (Math.floor(daysLeft / 3) + 1) {
+                case 1:
+                    return 'orange';
+                case 2:
+                    return 'yellow';
+            }
+
+            return 'green';
+        }
 
         // Orderby method to orderby any of the property...........
         public order(property) {
@@ -69,7 +83,7 @@ namespace SmartFridge.Controllers {
         public selectedCategories: any = [];
         public foodCategories = ["Dairy", "Frozen", "Refrigerated", "Protein", "Vegetable", "Fruit", "Other"];
 
-        constructor(private $http: ng.IHttpService) {
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
             // get categories
         }
         postItem() {
@@ -81,8 +95,8 @@ namespace SmartFridge.Controllers {
                 expDate: this.expDate,
                 categories: this.categories //may need to add value: 0 in case post fails.
             })
-                .then(response => {
-                    console.log(response.data);
+                .then((response) => {
+                    this.$state.go("myFridge");
                 })
                 .catch((response) => {
                     console.log(response.data);
@@ -96,7 +110,7 @@ namespace SmartFridge.Controllers {
             }
             else {
                 this.selectedCategories.push(category);
-            }            
+            }
         }
     }
 }

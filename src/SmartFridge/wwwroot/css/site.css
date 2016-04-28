@@ -81,15 +81,15 @@ textarea.materialize-textarea.valid,
 textarea.materialize-textarea:focus.valid {
 
 }
-/*.container {
-  border: 1px solid;
+.shadow-red:hover {
+  box-shadow: 0px 0px 20px red;
 }
-.row {
-  border: 1px solid green;
+.shadow-orange:hover {
+  box-shadow: 0px 0px 20px orange;
 }
-.col {
-  border: 1px solid blue;
-}*/
-/*.card {
-  height: 25vh;
-}*/
+.shadow-yellow:hover {
+  box-shadow: 0px 0px 20px yellow;
+}
+.shadow-green:hover {
+  box-shadow: 0px 0px 20px green;
+}
