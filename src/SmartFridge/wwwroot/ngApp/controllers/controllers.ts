@@ -17,12 +17,11 @@ namespace SmartFridge.Controllers {
 
     export class ViewFridgeController {
 
-        public selectedItem;
-        public fridgeItems;
-        public predicate;
-        public reverse;
+        public fridgeItems;//entire collection of items in database
+        public predicate;//filter component
+        public reverse;//filter component
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $filter) {
-
+        //get items from database
             $http.get('/api/Items')
                 .then((response) => {
                     this.fridgeItems = response.data;
@@ -34,31 +33,30 @@ namespace SmartFridge.Controllers {
 
         public deleteItem(itemToGo) {
             console.log(itemToGo);
-            
-            this.$http.delete(`/api/delete`, itemToGo)
+
+            this.$http.post(`/api/Items/delete`, itemToGo)
                 .then((response) => {
                     console.log(response);
-                    this.$state.go('myFridge');
+                    //refresh current state (for use when reloading same state)
+                    this.$state.go(this.$state.current, {}, {reload: true});
                 })
                 .catch((response) => {
                     console.log(response);
                 })
         }
 
+        //function to assign a CSS class that changes the card's shadow color depending on days untill expiration
         getColor(daysLeft) {
             daysLeft = this.$filter('amDifference')(daysLeft, null, 'days');
-
             if (daysLeft <= 0) {
                 return 'red';
             }
-
             switch (Math.floor(daysLeft / 3) + 1) {
                 case 1:
                     return 'orange';
                 case 2:
                     return 'yellow';
             }
-
             return 'green';
         }
 
