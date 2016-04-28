@@ -1,17 +1,12 @@
 <div class="container">
-  <fieldset>
-    <legend>Login with a Social Provider</legend>
-
+  <h2 class="header light">Log in</h2>
+  <br />
     <ul>
       <li ng-repeat="externalLogin in account.externalLogins">
         <a target="_self" href="/api/account/ExternalLogin?provider={{externalLogin.authenticationScheme}}&returnUrl=/">{{externalLogin.displayName}}</a>
       </li>
     </ul>
 
-  </fieldset>
-
-  <fieldset>
-    <legend>Login Locally</legend>
     <ul>
       <li ng-repeat="error in controller.validationMessages">
         {{error}}
@@ -30,5 +25,5 @@
       <input type="submit" value="Login" />
       <a href="/register">Register</a>
     </form>
-  </fieldset>
+
 </div>

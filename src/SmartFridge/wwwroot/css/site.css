@@ -7,12 +7,11 @@
     padding-left: 0;
   }
 }*/
+
 p.light{
   font-weight:500;
 }
-p.page-text{
-  font-size:12px;
-}
+
 nav ul a:focus{
   color:#004d40;
 }
@@ -92,6 +91,14 @@ input[type=text]:focus:not([readonly]){
   box-shadow: 0 1px 0 0 #9E9E9E;
 }
 input[type=text]:focus.valid{
+  border-bottom: 1px solid #9E9E9E;
+  box-shadow: 0 1px 0 0 #9E9E9E;
+}
+input:not([type]):focus:not([readonly]){
+  border-bottom: 1px solid #9E9E9E;
+  box-shadow: 0 1px 0 0 #9E9E9E;
+}
+input[type=password]:focus:not([readonly]){
   border-bottom: 1px solid #9E9E9E;
   box-shadow: 0 1px 0 0 #9E9E9E;
 }

@@ -1,28 +1,26 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="SmartFridge">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-    <title>SmartFridge</title>
-    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="~/css/fontsheetcss.css" rel="stylesheet" />
-    <link href="~/lib/materialize/dist/css/materialize.css" rel="stylesheet" />
-    <link href="~/css/site.css" rel="stylesheet" />
-    <base href="/" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <title>SmartFridge</title>
+  <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="~/css/fontsheetcss.css" rel="stylesheet" />
+  <link href="~/lib/materialize/dist/css/materialize.css" rel="stylesheet" />
+  <link href="~/css/site.css" rel="stylesheet" />
+  <base href="/" />
 </head>
 <body ng-controller="AccountController as account">
-    <nav class="teal lighten-1" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" href="/" class="brand-logo"><img class="nav-logo-1" src="~/images/smFr.png" /></a>
-            <ul class="right hide-on-med-and-down">
-              <li><a href="/addItem">Add</a></li>
-              <li><a href="/fridge">View All</a></li>
-              <li><a href="#">Expired</a></li>
-              <li><a href="/login" ng-show="!account.isLoggedIn()">Login</a></li>
-               @*<li ng-show="account.isLoggedIn()">{{account.getUserName()}}</li>*@
-              <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>
-            </ul>
-
+  <nav class="teal lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="/" class="brand-logo"><img class="nav-logo-1" src="~/images/smFr.png" /></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/addItem">Add</a></li>
+        <li><a href="/fridge">View All</a></li>
+        <li><a href="/login" ng-show="!account.isLoggedIn()">Login</a></li>
+        @*<li ng-show="account.isLoggedIn()">{{account.getUserName()}}</li>*@
+        <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>
+      </ul>
       <div id="nav-mobile" class="side-nav grey lighten-3">
         <div class="sideHeader  teal lighten-1">
           <div>
@@ -30,62 +28,56 @@
           </div>
         </div>
         <div class="sideItems">
-          <div><a class="sideItem" href="/login"><i class="fa fa-sign-in" ></i><span class="sideItemFont">Login</span></a></div>
-          <div><a class="sideItem" href="/addItem"><i class="fa fa-plus" ></i><span class="sideItemFont">Add</span></a></div>
-          <div><a class="sideItem" href="/fridge"><i class="fa fa-list" ></i><span class="sideItemFont">View All</span></a></div>
-          <div><a class="sideItem" href="#"><i class="fa fa-calendar" ></i><span class="sideItemFont">Expired</span></a></div>
+          <div><a class="sideItem" href="/login"><i class="fa fa-sign-in"></i><span class="sideItemFont">Login</span></a></div>
+          <div><a class="sideItem" href="/addItem"><i class="fa fa-plus"></i><span class="sideItemFont">Add</span></a></div>
+          <div><a class="sideItem" href="/fridge"><i class="fa fa-list"></i><span class="sideItemFont">View All</span></a></div>
         </div>
       </div>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        </div>
-    </nav>
-
-    <div class="section no-pad-bot" id="index-banner">
-      
-            <br><br>
-
-            <ui-view></ui-view>
-
-            <br><br>
-        </div>
-   
-    
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <br><br>
+      <ui-view></ui-view>
+    <br><br>
+  </div>
+  <br><br>
     <footer class="page-footer teal lighten-1">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12 white-text">
-                    <p>
-                      <h5>Contact</h5>
-                      500 Somewhere Park, 3rd Floor<br />
-                      Codeville, Massachusetts 01801<br />
-                      E-mail:	info@us.smartfridge.com<br />
-                      Website: usa.smartfridge.com
-                    </p>
-                </div>
-                <div class="col l3 s12">
-                    <!--space-->
-                    <p></p>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12 white-text">
+            <p>
+              <h5>Contact</h5>
+              500 Somewhere Park, 3rd Floor<br />
+              Codeville, Massachusetts 01801<br />
+              E-mail:	info@us.smartfridge.com<br />
+              Website: usa.smartfridge.com
+            </p>
+          </div>
+          <div class="col l3 s12">
+            <!--space-->
+            <p></p>
+          </div>
 
-                <div class="nav col l3 s12">
-                    <ul>
-                        <li>
-              <a class="socIcon" href="#"><i class="fa fa-facebook"></i></a>
-              <a class="socIcon" href="#"><i class="fa fa-twitter"></i></a>
-              <a class="socIcon" href="#"><i class="fa fa-linkedin"></i></a>
-              <a class="socIcon" href="#"><i class="fa fa-google-plus"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+          <div class="nav col l3 s12">
+            <ul>
+              <li>
+                <a class="socIcon" href="#"><i class="fa fa-facebook"></i></a>
+                <a class="socIcon" href="#"><i class="fa fa-twitter"></i></a>
+                <a class="socIcon" href="#"><i class="fa fa-linkedin"></i></a>
+                <a class="socIcon" href="#"><i class="fa fa-google-plus"></i></a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="footer-copyright">
-            <div class="container center">
-                Made by <a class="teal-text text-lighten-5" href="#">Team Code Troopers</a>
-            </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container center">
+          Made by <a class="teal-text text-lighten-5" href="#">Team Code Troopers</a>
         </div>
+      </div>
     </footer>
-
+   
     <!-- Library Files -->
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/materialize/dist/js/materialize.js"></script>
@@ -96,7 +88,7 @@
     <script src="~/lib/angular-touch/angular-touch.js"></script>
     <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="~/lib/materialize/templates/starter-template/js/init.js"></script>
-    <script src="~/lib/angular-materialize/src/angular-materialize.js"></script>    
+    <script src="~/lib/angular-materialize/src/angular-materialize.js"></script>
     <script src="~/lib/moment/moment.js"></script>
     <script src="~/lib/angular-moment/angular-moment.js"></script>
 
