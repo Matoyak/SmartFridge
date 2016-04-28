@@ -56,9 +56,14 @@ namespace SmartFridge.Controllers {
         /// Deletes item from the database.
         /// </summary>
         /// <param name="id">The item to be deleted.</param>
-        [HttpDelete("{id}")]
-        public void Delete(int id) {
-            _itemServ.DeleteItem(id);
+        [HttpPost("delete")]
+        public IActionResult Delete([FromBody]ItemDTO item) {
+            if(ModelState.IsValid) {
+                //add new item to db
+                _itemServ.DeleteItem(item, User.Identity.Name);
+                return Ok(item);
+            }
+            return HttpBadRequest(ModelState);
         }
     }
 }
