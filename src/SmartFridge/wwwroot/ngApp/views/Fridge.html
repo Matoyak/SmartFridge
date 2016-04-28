@@ -49,6 +49,7 @@
           <p>Expires: {{item.expDate | date}}</p>
           <span ng-repeat="category in item.categories">Categories: </span>
           <span>{{category.name}}</span>
+            <input type="submit" value="Delete" ng-click="controller.deleteItem(item)" />
         </div>
       </div>
     </div>

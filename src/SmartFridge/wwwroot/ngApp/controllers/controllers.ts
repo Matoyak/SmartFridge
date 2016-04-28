@@ -31,21 +31,20 @@ namespace SmartFridge.Controllers {
                     console.log(response.data);
                 })
         }
-        deleteItem(itemToGo) {
+
+        public deleteItem(itemToGo) {
             console.log(itemToGo);
-            let item = this.selectedItem;
-            //this.$http.delete(`/api/delete`, item)
-            //    .then((response) => {
-            //        console.log(response);
-            //        this.$state.go('myFridge');
-            //    })
-            //    .catch((response) => {
-            //        console.log(response);
-            //    })
+            
+            this.$http.delete(`/api/delete`, itemToGo)
+                .then((response) => {
+                    console.log(response);
+                    this.$state.go('myFridge');
+                })
+                .catch((response) => {
+                    console.log(response);
+                })
         }
-        public openModal(selectedItem) {
-            this.selectedItem = selectedItem;
-        }
+       
 
 
         // Orderby method to orderby any of the property...........
