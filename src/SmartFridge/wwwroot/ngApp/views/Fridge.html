@@ -34,21 +34,24 @@
   </table>
 
   <div class="row">
-    <div class="col s12 m4" ng-repeat="item in controller.fridgeItems |  orderBy:controller.predicate:controller.reverse | filter:model">
+    <div class="col s12 m4 " ng-class="getColor({{item.expDate | amDifference : null : 'days'}})" ng-repeat="item in controller.fridgeItems |  orderBy:controller.predicate:controller.reverse | filter:model">
       <div class="card">
         <div class="card-image">
           <img class="activator" src="../../images/fruits.png" />
         </div>
         <div class="card-content">
           <span class="card-title activator">{{item.name}}<i class="material-icons right">more_vert</i></span>
-          <h6>Happy until: {{item.expDate | date}}</h6>
           <h6>Days left: {{item.expDate | amDifference : null : 'days'}}</h6>
         </div>
         <div class="card-reveal">
           <div class="card-title">{{item.name}}<i class="material-icons right">close</i></div>
+          <p>Added: {{item.addedDate| date}}</p>
           <p>Expires: {{item.expDate | date}}</p>
-          <span ng-repeat="category in item.categories">Categories: </span>
-          <span>{{category.name}}</span>
+          <p>Days left: {{}}</p>
+          <span>Categories: </span>
+          <div class="chip" ng-repeat="category in item.categories">
+            <span> {{category.name}}</span>
+          </div>
         </div>
       </div>
     </div>

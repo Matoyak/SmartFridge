@@ -43,10 +43,20 @@ namespace SmartFridge.Controllers {
             //        console.log(response);
             //    })
         }
-        public openModal(selectedItem) {
-            this.selectedItem = selectedItem;
-        }
 
+        getColor(daysLeft) {
+            console.log(daysLeft);
+            switch (daysLeft) {
+                case daysLeft < 0:
+                    return '.red';
+                case daysLeft < 3:
+                    return '.orange';
+                case daysLeft < 7:
+                    return '.yellow';
+                case daysLeft < 10:
+                    return '.green';
+            }
+        }
 
         // Orderby method to orderby any of the property...........
         public order(property) {
