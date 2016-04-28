@@ -34,8 +34,8 @@
   </table>
 
   <div class="row">
-    <div class="col s12 m4 " ng-class="getColor({{item.expDate | amDifference : null : 'days'}})" ng-repeat="item in controller.fridgeItems |  orderBy:controller.predicate:controller.reverse | filter:model">
-      <div class="card">
+    <div class="col s12 m4" ng-repeat="item in controller.fridgeItems |  orderBy:controller.predicate:controller.reverse | filter:model">
+      <div class="card shadow-{{controller.getColor(item.expDate)}}">
         <div class="card-image">
           <img class="activator" src="../../images/fruits.png" />
         </div>
@@ -47,11 +47,11 @@
           <div class="card-title">{{item.name}}<i class="material-icons right">close</i></div>
           <p>Added: {{item.addedDate| date}}</p>
           <p>Expires: {{item.expDate | date}}</p>
-          <p>Days left: {{}}</p>
-          <span>Categories: </span>
+          <p>Days left: {{item.expDate | amDifference : null : 'days'}}</p>
           <div class="chip" ng-repeat="category in item.categories">
             <span> {{category.name}}</span>
           </div>
+        </div>
         </div>
       </div>
     </div>

@@ -81,15 +81,15 @@ textarea.materialize-textarea.valid,
 textarea.materialize-textarea:focus.valid {
 
 }
-.red {
+.shadow-red:hover {
   box-shadow: 0px 0px 20px red;
 }
-.orange {
+.shadow-orange:hover {
   box-shadow: 0px 0px 20px orange;
 }
-.yellow {
+.shadow-yellow:hover {
   box-shadow: 0px 0px 20px yellow;
 }
-.green {
+.shadow-green:hover {
   box-shadow: 0px 0px 20px green;
 }

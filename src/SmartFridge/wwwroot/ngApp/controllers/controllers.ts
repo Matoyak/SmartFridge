@@ -21,7 +21,7 @@ namespace SmartFridge.Controllers {
         public fridgeItems;
         public predicate;
         public reverse;
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $filter) {
 
             $http.get('/api/Items')
                 .then((response) => {
@@ -45,17 +45,20 @@ namespace SmartFridge.Controllers {
         }
 
         getColor(daysLeft) {
-            console.log(daysLeft);
-            switch (daysLeft) {
-                case daysLeft < 0:
-                    return '.red';
-                case daysLeft < 3:
-                    return '.orange';
-                case daysLeft < 7:
-                    return '.yellow';
-                case daysLeft < 10:
-                    return '.green';
+            daysLeft = this.$filter('amDifference')(daysLeft, null, 'days');
+
+            if (daysLeft <= 0) {
+                return 'red';
             }
+
+            switch (Math.floor(daysLeft / 3) + 1) {
+                case 1:
+                    return 'orange';
+                case 2:
+                    return 'yellow';
+            }
+
+            return 'green';
         }
 
         // Orderby method to orderby any of the property...........
@@ -106,7 +109,7 @@ namespace SmartFridge.Controllers {
             }
             else {
                 this.selectedCategories.push(category);
-            }            
+            }
         }
     }
 }
