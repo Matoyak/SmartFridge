@@ -10,7 +10,7 @@
     <link href="~/css/site.css" rel="stylesheet" />
     <base href="/" />
 </head>
-<body>
+<body ng-controller="AccountController as account">
     <nav class="teal lighten-1" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="/" class="brand-logo"><img class="nav-logo-1" src="~/images/smFr.png" /></a>
@@ -18,7 +18,9 @@
               <li><a href="/addItem">Add</a></li>
               <li><a href="/fridge">View All</a></li>
               <li><a href="#">Expired</a></li>
-              <li><a href="/login">Login</a></li>
+              <li><a href="/login" ng-show="!account.isLoggedIn()">Login</a></li>
+               @*<li ng-show="account.isLoggedIn()">{{account.getUserName()}}</li>*@
+              <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>
             </ul>
 
       <div id="nav-mobile" class="side-nav grey lighten-3">

@@ -69,7 +69,7 @@ namespace SmartFridge.Controllers {
         public selectedCategories: any = [];
         public foodCategories = ["Dairy", "Frozen", "Refrigerated", "Protein", "Vegetable", "Fruit", "Other"];
 
-        constructor(private $http: ng.IHttpService) {
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
             // get categories
         }
         postItem() {
@@ -81,8 +81,8 @@ namespace SmartFridge.Controllers {
                 expDate: this.expDate,
                 categories: this.categories //may need to add value: 0 in case post fails.
             })
-                .then(response => {
-                    console.log(response.data);
+                .then((response) => {
+                    this.$state.go("myFridge");
                 })
                 .catch((response) => {
                     console.log(response.data);
