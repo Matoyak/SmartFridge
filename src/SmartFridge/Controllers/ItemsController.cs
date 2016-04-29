@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 using SmartFridge.Services;
@@ -28,6 +27,20 @@ namespace SmartFridge.Controllers {
         //}
 
         /// <summary>
+        /// Deletes item from the database.
+        /// </summary>
+        /// <param name="id">The item to be deleted.</param>
+        [HttpPost("delete")]
+        public IActionResult Delete([FromBody]ItemDTO item) {
+            if(ModelState.IsValid) {
+                //add new item to db
+                _itemServ.DeleteItem(item, User.Identity.Name);
+                return Ok(item);
+            }
+            return HttpBadRequest(ModelState);
+        }
+
+        /// <summary>
         /// Calls the Item Service to return all items owned by a user
         /// </summary>
         /// <returns>Returns all items owned by the user.</returns>
@@ -47,20 +60,6 @@ namespace SmartFridge.Controllers {
             if(ModelState.IsValid) {
                 //add new item to db
                 _itemServ.AddItem(item, User.Identity.Name);
-                return Ok(item);
-            }
-            return HttpBadRequest(ModelState);
-        }
-
-        /// <summary>
-        /// Deletes item from the database.
-        /// </summary>
-        /// <param name="id">The item to be deleted.</param>
-        [HttpPost("delete")]
-        public IActionResult Delete([FromBody]ItemDTO item) {
-            if(ModelState.IsValid) {
-                //add new item to db
-                _itemServ.DeleteItem(item, User.Identity.Name);
                 return Ok(item);
             }
             return HttpBadRequest(ModelState);

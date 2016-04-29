@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SmartFridge.Infrastructure;
 using SmartFridge.Models;
 using SmartFridge.Services.Models;
-using System;
 
 namespace SmartFridge.Services {
 
     public class ItemService {
+        private CategoryRepository _catRepo;
         private ItemRepository _itemRepo;
         private UserRepository _userRepo;
-        private CategoryRepository _catRepo;
 
         public ItemService(ItemRepository itemRepo, UserRepository userRepo, CategoryRepository catRepo) {
             _itemRepo = itemRepo;
@@ -19,49 +19,12 @@ namespace SmartFridge.Services {
         }
 
         /// <summary>
-        /// Use only for testing purposes, in actual code use GetItemListByUser()
-        /// </summary>
-        /// <returns>Returns a Collection of all items in the database.</returns>
-        public ICollection<ItemDTO> GetItemList() {
-            return (from i in _itemRepo.List()
-                    select new ItemDTO() {
-                        Name = i.Name,
-                        ExpDate = i.ExpDate,
-                        AddedDate = i.AddedDate,
-                        IsExpired = i.IsExpired,
-                        Categories = i.ItemCategories.Select(ic => new KeyValueDTO<int> {
-                            Name = ic.Category.Name,
-                            Value = ic.CategoryId
-                        }).ToList()
-                    }).ToList();
-        }
-
-        /// <summary>
-        /// Gets the list of items belonging to a specific user.
-        /// </summary>
-        /// <param name="currUser">The currently logged in user.</param>
-        /// <returns>Returns a collection of ItemDTOs owned by the user.</returns>
-        public ICollection<ItemDTO> GetItemListByUser(string currUser) {
-            return (from i in _itemRepo.GetItemsByUsername(currUser)
-                    select new ItemDTO() {
-                        Name = i.Name,
-                        ExpDate = i.ExpDate,
-                        AddedDate = i.AddedDate,
-                        IsExpired = i.IsExpired,
-                        Categories = i.ItemCategories.Select(ic => new KeyValueDTO<int> {
-                            Name = ic.Category.Name,
-                            Value = ic.CategoryId
-                        }).ToList()
-                    }
-                    ).ToList();
-        }
-
-        /// <summary>
         /// Adds an item to the database.
         /// </summary>
-        /// <param name="item">The ItemDTO info grabbed from the controller, converted to Item model</param>
+        /// <param name="item">
+        /// The ItemDTO info grabbed from the controller, converted to Item model
+        /// </param>
         public void AddItem(ItemDTO item, string currentUser) {
-
             Item newItem = new Item {
                 Name = item.Name,
                 AddedDate = System.DateTime.Now,
@@ -124,6 +87,43 @@ namespace SmartFridge.Services {
                 }
             }
             return false;
+        }
+
+        /// <summary>
+        /// Use only for testing purposes, in actual code use GetItemListByUser()
+        /// </summary>
+        /// <returns>Returns a Collection of all items in the database.</returns>
+        public ICollection<ItemDTO> GetItemList() {
+            return (from i in _itemRepo.List()
+                    select new ItemDTO() {
+                        Name = i.Name,
+                        ExpDate = i.ExpDate,
+                        AddedDate = i.AddedDate,
+                        IsExpired = i.IsExpired,
+                        Categories = i.ItemCategories.Select(ic => new KeyValueDTO<int> {
+                            Name = ic.Category.Name,
+                            Value = ic.CategoryId
+                        }).ToList()
+                    }).ToList();
+        }
+
+        /// <summary>
+        /// Gets the list of items belonging to a specific user.
+        /// </summary>
+        /// <param name="currUser">The currently logged in user.</param>
+        /// <returns>Returns a collection of ItemDTOs owned by the user.</returns>
+        public ICollection<ItemDTO> GetItemListByUser(string currUser) {
+            return (from i in _itemRepo.GetItemsByUsername(currUser)
+                    select new ItemDTO() {
+                        Name = i.Name,
+                        ExpDate = i.ExpDate,
+                        AddedDate = i.AddedDate,
+                        IsExpired = i.IsExpired,
+                        Categories = i.ItemCategories.Select(ic => new KeyValueDTO<int> {
+                            Name = ic.Category.Name,
+                            Value = ic.CategoryId
+                        }).ToList()
+                    }).ToList();
         }
     }
 }

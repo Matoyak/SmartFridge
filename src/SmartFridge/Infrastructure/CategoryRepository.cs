@@ -1,11 +1,11 @@
-﻿using SmartFridge.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using SmartFridge.Models;
 
 namespace SmartFridge.Infrastructure {
+
     public class CategoryRepository : GenericRepository<Category> {
+
         public CategoryRepository(ApplicationDbContext db) : base(db) { }
 
         public IQueryable<Category> GetCategories(IEnumerable<string> categories) {
