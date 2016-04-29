@@ -70,6 +70,13 @@ namespace SmartFridge.Infrastructure {
                    select i;
         }
 
+        /// <summary>
+        /// Gets a single item belonging to a specified user that has a specific name and added date.
+        /// </summary>
+        /// <param name="userName">The user the item belongs to.</param>
+        /// <param name="itemName">The name of the item.</param>
+        /// <param name="dateAdded">The creation date of the item.</param>
+        /// <returns>Returns  an IQueryable that will fetch a specific item based on the correct criteria.</returns>
         public IQueryable<Item> GetItemByUsername(string userName, string itemName, DateTime dateAdded) {
             return from i in _db.Items
                    where i.User.UserName == userName && i.AddedDate == dateAdded && i.Name == itemName
