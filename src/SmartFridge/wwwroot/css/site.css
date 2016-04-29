@@ -8,6 +8,14 @@
   }
 }*/
 
+body {
+  font-family: 'robotoregular', 'Fira Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.titleFont {
+  font-family: 'bebas_neuebold', 'Bebas Neue', 'robotobold', Cambria, Verdana, sans-serif;
+}
+
 p.light {
   font-weight: 500;
 }

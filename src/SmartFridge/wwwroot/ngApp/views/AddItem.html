@@ -1,5 +1,5 @@
 ﻿<div class="container">
-  <h2 class="header light">Add Food</h2>
+  <h2 class="header light titleFont">Add Food</h2>
   <br><br />
   <form ng-submit="controller.postItem()" name="myForm">
     <div class="row">
@@ -12,7 +12,7 @@
             <label for="item_name">Your new fridge item</label>
           </div>
           <div class="input-field col s7">
-            <label for="inputCreated">Input date</label>
+            <label for="inputCreated" >Input date</label>
             <input id="inputCreated" name="date" type="text" format="yyyy/mm/dd"
                    input-date ng-model="controller.expDate"
                    ng-change="controller.seeDate()" required />

@@ -67,9 +67,9 @@ namespace SmartFridge.Infrastructure {
         /// </returns>
         public IQueryable<Item> GetItemsByUsername(string userName) {
             return from i in _db.Items
-                    where i.User.UserName == userName
-                    //possibly order things here
-                    select i;
+                   where i.User.UserName == userName
+                   //possibly order things here
+                   select i;
         }
     }
 }

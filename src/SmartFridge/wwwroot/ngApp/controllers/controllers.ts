@@ -29,7 +29,7 @@ namespace SmartFridge.Controllers {
 
         public deleteItem(itemToGo) {
             //console.log(itemToGo); //DEBUG
-            this.$http.post(`/api/Items/delete`, itemToGo)
+            this.$http.post(`/api/Items/Delete`, itemToGo)
                 .then((response) => {
                     console.log(response);
                     //refresh current state
@@ -78,7 +78,7 @@ namespace SmartFridge.Controllers {
             this.selectedCategories.forEach((category) => {
                 this.categories.push({ name: category })
             });
-            this.$http.post("/api/items", {
+            this.$http.post("/api/Items", {
                 name: this.name,
                 expDate: this.expDate,
                 categories: this.categories //may need to add value: 0 in case post fails.

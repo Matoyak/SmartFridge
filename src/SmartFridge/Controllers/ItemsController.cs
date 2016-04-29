@@ -30,7 +30,7 @@ namespace SmartFridge.Controllers {
         /// Deletes item from the database.
         /// </summary>
         /// <param name="id">The item to be deleted.</param>
-        [HttpPost("delete")]
+        [HttpPost("Delete")]
         public IActionResult Delete([FromBody]ItemDTO item) {
             if(ModelState.IsValid) {
                 //add new item to db
@@ -61,6 +61,21 @@ namespace SmartFridge.Controllers {
                 //add new item to db
                 _itemServ.AddItem(item, User.Identity.Name);
                 return Ok(item);
+            }
+            return HttpBadRequest(ModelState);
+        }
+
+        /// <summary>
+        /// Put function to allow updating an item.
+        /// </summary>
+        /// <param name="itemToUpdate">The item to be updated.</param>
+        /// <returns>Returns OK if successful.</returns>
+        [HttpPut("Put")]
+        public IActionResult Put([FromBody]ItemDTO itemToUpdate) {
+            if(ModelState.IsValid) {
+                //add new item to db
+                _itemServ.UpdateItem(itemToUpdate, User.Identity.Name);
+                return Ok(itemToUpdate);
             }
             return HttpBadRequest(ModelState);
         }
