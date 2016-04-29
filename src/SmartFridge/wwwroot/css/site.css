@@ -7,13 +7,15 @@
     padding-left: 0;
   }
 }*/
+body{
+    font-family: 'Roboto';
+}
 
 .sticky {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
 }
-
 
 p.light {
   font-weight: 500;
