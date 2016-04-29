@@ -17,6 +17,49 @@ namespace SmartFridge.Controllers {
         public fridgeItems; //entire collection of items in database
         public predicate; //filter component
         public reverse; //filter component
+        public categoryImages = [
+            {
+                name: 'Dairy',
+                img: '../../images/dairy.png',
+            },
+            {
+                name: 'Frozen',
+                img: '../../images/frozen.png',
+            },
+            {
+                name: 'Fruit',
+                img: '../../images/fruit2.png',
+            },
+            {
+                name: 'Protein',
+                img: '../../images/protien.png',
+            },
+            {
+                name: 'Junk',
+                img: '../../images/other2.png',
+            },
+            {
+                name: 'Vegetable',
+                img: '../../images/vegetables.png',
+            },
+            {
+                name: 'Grain',
+                img: '../../images/other1.png',
+            },
+            {
+                name: 'None',
+                img: '../../images/girllogo.png',
+            },
+            {
+                name: 'Other',
+                img: '../../images/fruit1.png',
+            },
+            {
+                name: 'Refrigerated',
+                img: '../../images/kitchen.png',
+            }
+
+        ];
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $filter) {
             //get items from database
             $http.get('/api/Items')
@@ -39,7 +82,25 @@ namespace SmartFridge.Controllers {
                 });
         }
 
-        //function to assign a CSS class that changes the card's shadow color depending on days until expiration
+        getImage(item) {
+            let img;
+            console.log(item);
+            if (item.categories.length >=1) {
+                this.categoryImages.forEach((category, x) => {
+                    if (this.categoryImages[x].name === item.categories[0].name) {
+                        console.log(typeof(this.categoryImages[x].img));
+                        img = this.categoryImages[x].img;
+                        return;
+                    }
+                })
+                return img;
+            }
+            else {
+                console.log(this.categoryImages[7]);
+                return this.categoryImages[7].img;
+            }
+        }
+
         getColor(daysLeft) {
             daysLeft = this.$filter('amDifference')(daysLeft, null, 'days');
             if (daysLeft <= 0) {
@@ -70,7 +131,7 @@ namespace SmartFridge.Controllers {
         public categories = [];
         public selectedCategory;
         public selectedCategories: any = [];
-        public foodCategories = ["Dairy", "Frozen", "Refrigerated", "Protein", "Vegetable", "Fruit", "Other"];
+        public foodCategories = ["Dairy", "Junk", "Frozen", "Refrigerated", "Protein", "Vegetable", "Fruit", "Other", "Grain"];
 
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) { }
 
