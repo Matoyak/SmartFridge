@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="header light titleFont">Log in</h2>
-  <br />
+
   <ul>
     <li ng-repeat="externalLogin in account.externalLogins">
       <a target="_self" href="/api/account/ExternalLogin?provider={{externalLogin.authenticationScheme}}&returnUrl=/">{{externalLogin.displayName}}</a>
@@ -16,11 +16,11 @@
   <form ng-submit="controller.login()">
     <div class="row">
       <div class="input-field col s7">
-        <label for="loginEmail" >Email:</label>
+        <label for="loginEmail" >Email</label>
         <input id="loginEmail" type="text" ng-model="controller.loginUser.email" />
       </div>
       <div class="input-field col s7">
-        <label for="loginPass" >Password:</label>
+        <label for="loginPass" >Password</label>
         <input id="loginPass" type="password" ng-model="controller.loginUser.password" />
       </div>
     </div>

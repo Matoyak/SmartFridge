@@ -8,13 +8,12 @@
   }
 }*/
 
-body {
-  font-family: 'robotoregular', 'Fira Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.sticky {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-.titleFont {
-  font-family: 'bebas_neuebold', 'Bebas Neue', 'robotobold', Cambria, Verdana, sans-serif;
-}
 
 p.light {
   font-weight: 500;
@@ -127,4 +126,8 @@ input:not([type]):focus:not([readonly]),
 input[type=password]:focus:not([readonly]) {
   border-bottom: 1px solid #9E9E9E;
   box-shadow: 0 1px 0 0 #9E9E9E;
+}
+
+.chip:hover{
+  cursor:pointer;
 }
