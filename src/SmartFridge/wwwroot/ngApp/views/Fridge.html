@@ -60,7 +60,13 @@
           <div class="chip" ng-repeat="category in item.categories">
             <span> {{category.name}}</span>
           </div>
-          <input type="submit" value="Delete" ng-click="controller.deleteItem(item)" />
+          <div class="card-action">
+            <div class="row">
+              <div class="col s12">
+                <a class="btn btn-success btn-lg white-text sticky-button" ng-click="controller.deleteItem(item)">Delete</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
