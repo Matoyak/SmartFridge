@@ -15,11 +15,23 @@ namespace SmartFridge.Infrastructure {
         /// <returns>Returns true if the delete happened correctly.</returns>
         public bool Delete(int id) {
             Item dbItem = GetItemById(id).FirstOrDefault();
-            //check if item is the same as the one passed in. Do this here or in the service?
             if(dbItem == null) {
                 return false;
             }
             _db.Remove(dbItem);
+            return true;
+        }
+
+        /// <summary>
+        /// Deletes a specified item from the database.
+        /// </summary>
+        /// <param name="item">The item to be deleted.</param>
+        /// <returns>Returns true if upon successful deletion.</returns>
+        public bool Delete(Item item) {
+            if(item == null) {
+                return false;
+            }
+            _db.Remove(item);
             return true;
         }
 
@@ -55,6 +67,13 @@ namespace SmartFridge.Infrastructure {
         public IQueryable<Item> GetItemByName(string name) {
             return from i in _db.Items
                    where i.Name == name
+                   select i;
+        }
+
+        public IQueryable<Item> GetItemByUsername(string userName, string itemName, DateTime dateAdded) {
+            return from i in _db.Items
+                   where i.User.UserName == userName && i.AddedDate == dateAdded && i.Name == itemName
+                   //possibly order things here
                    select i;
         }
 

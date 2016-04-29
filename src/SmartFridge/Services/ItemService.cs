@@ -62,16 +62,14 @@ namespace SmartFridge.Services {
         /// <returns>Returns true if it deleted successfully.</returns>
         //should this actually delete as it does now, or just "deactivate" and hide? Might be way more work than is necessary for this project.
         public bool DeleteItem(ItemDTO itemFromFront, string currUser) {
-            List<Item> items = _itemRepo.GetItemsByUsername(currUser).ToList();
-            foreach(Item item in items) {
-                if(itemFromFront.Name == item.Name && itemFromFront.AddedDate == item.AddedDate) {
-                    bool check = _itemRepo.Delete(item.Id);
-                    if(!check) {
-                        return false;
-                    }
-                    _itemRepo.SaveChanges();
-                    return true;
+            Item deleteItem = _itemRepo.GetItemByUsername(currUser, itemFromFront.Name, itemFromFront.AddedDate).FirstOrDefault();
+            if(deleteItem != null) {
+                bool check = _itemRepo.Delete(deleteItem);
+                if(!check) {
+                    return false;
                 }
+                _itemRepo.SaveChanges();
+                return true;
             }
             return false;
         }
@@ -119,33 +117,30 @@ namespace SmartFridge.Services {
         /// <param name="itemFromFront">The item to be updated.</param>
         /// <param name="currUser">The current user</param>
         /// <returns>Returns true if successful update.</returns>
-        //double check with Eric on whether this is all being done correctly.
         public bool UpdateItem(ItemDTO itemFromFront, string currUser) {
-            List<Item> items = _itemRepo.GetItemsByUsername(currUser).ToList();
-            List<Category> dbCategories = _catRepo.GetCategories(itemFromFront.Categories.Select(cat => cat.Name)).ToList();
-            foreach(Category newCat in (from c in itemFromFront.Categories
-                                        where !dbCategories.Any(db => db.Name == c.Name)
-                                        select new Category() {
-                                            Name = c.Name
-                                        })) {
-                _catRepo.Add(newCat);
-                dbCategories.Add(newCat);
-            }
-            _catRepo.SaveChanges();
-
-            foreach(Item item in items) {
-                if(item.AddedDate == itemFromFront.AddedDate && item.Name == itemFromFront.Name) {
-                    item.Name = itemFromFront.Name;
-                    item.Barcode = itemFromFront.Barcode;
-                    item.ExpDate = itemFromFront.ExpDate;
-                    item.ItemCategories = (from c in dbCategories
-                                           select new ItemCategory() {
-                                               Category = c,
-                                               Item = item
-                                           }).ToList();
-                    _itemRepo.SaveChanges();
-                    return true;
+            Item updateItem = _itemRepo.GetItemByUsername(currUser, itemFromFront.Name, itemFromFront.AddedDate).FirstOrDefault();
+            if(updateItem != null) {
+                List<Category> dbCategories = _catRepo.GetCategories(itemFromFront.Categories.Select(cat => cat.Name)).ToList();
+                foreach(Category newCat in (from c in itemFromFront.Categories
+                                            where !dbCategories.Any(db => db.Name == c.Name)
+                                            select new Category() {
+                                                Name = c.Name
+                                            })) {
+                    _catRepo.Add(newCat);
+                    dbCategories.Add(newCat);
                 }
+                _catRepo.SaveChanges();
+
+                updateItem.Name = itemFromFront.Name;
+                updateItem.Barcode = itemFromFront.Barcode;
+                updateItem.ExpDate = itemFromFront.ExpDate;
+                updateItem.ItemCategories = (from c in dbCategories
+                                             select new ItemCategory() {
+                                                 Category = c,
+                                                 Item = updateItem
+                                             }).ToList();
+                _itemRepo.SaveChanges();
+                return true;
             }
             return false;
         }
