@@ -13,6 +13,20 @@ namespace SmartFridge.Models {
             var userManager = serviceProvider.GetService<UserManager<ApplicationUser>>();
             context.Database.Migrate();
 
+            // Add MOND as administrators.
+            var mason = await userManager.FindByNameAsync("mwilliam09@gmail.com");
+            if(mason == null) {
+                // create user
+                mason = new ApplicationUser {
+                    UserName = "mwilliam09@gmail.com",
+                    Email = "mwilliam09@gmail.com"
+                };
+                await userManager.CreateAsync(mason, "Coder: Camps7!");
+
+                // add claims
+                await userManager.AddClaimAsync(mason, new Claim("IsAdmin", "true"));
+            }
+
             // Ensure Stephen (IsAdmin)
             var stephen = await userManager.FindByNameAsync("Stephen.Walther@CoderCamps.com");
             if(stephen == null) {

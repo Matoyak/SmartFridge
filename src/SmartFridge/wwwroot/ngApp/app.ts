@@ -1,5 +1,4 @@
 namespace SmartFridge {
-
     angular.module('SmartFridge', ['ui.router', 'ngResource', 'ui.materialize', 'angularMoment', 'ngAnimate']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
@@ -66,7 +65,6 @@ namespace SmartFridge {
         // Enable HTML5 navigation
         $locationProvider.html5Mode(true);
     });
-
 
     angular.module('SmartFridge').factory('authInterceptor', (
         $q: ng.IQService,

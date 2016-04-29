@@ -1,7 +1,4 @@
-﻿
-
-
-<div class="container">
+﻿<div class="container">
   <!--<pre>Sorting predicate = {{controller.predicate}}, reverse = {{controller.reverse}}</pre>-->
   <!--filter options-->
   <!--<table class="item">
@@ -48,34 +45,30 @@
 
   </div>
   <!--markup for card-->
-  <!--<form ng-submit="controller.deleteItem(item)">-->
-    <div class="row">
-      <!--<form ng-submit="controller.deleteItem(item)">-->
+  <div class="row">
       <div class="col s12 m4 l3" ng-animate="'animate'" ng-repeat="item in controller.fridgeItems |  orderBy:controller.predicate:controller.reverse | filter:model">
-        <div class="card shadow-{{controller.getColor(item.expDate)}}">
-          <div class="card-image">
+      <div class="card shadow-{{controller.getColor(item.expDate)}}">
+        <div class="card-image">
           <img class="activator" ng-src="{{controller.getImage(item)}}" />
-          </div>
-          <div class="card-content">
-            <span class="card-title activator">{{item.name}}<i class="material-icons right">more_vert</i></span>
-            <h6>Days left: {{item.expDate | amDifference : null : 'days'}}</h6>
-          </div>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator">{{item.name}}<i class="material-icons right">more_vert</i></span>
+          <h6>Days left: {{item.expDate | amDifference : null : 'days'}}</h6>
+        </div>
+
         <!--markup shown when card is clicked-->
-          <div class="card-reveal">
-            <div class="card-title">{{item.name}}<i class="material-icons right">close</i></div>
-            <p>Added: {{item.addedDate| date}}</p>
-            <p>Expires: {{item.expDate | date}}</p>
-            <p>Days left: {{item.expDate | amDifference : null : 'days'}}</p>
-            <div class="chip" ng-repeat="category in item.categories">
-              <span> {{category.name}}</span>
-            </div>
-            <!--<input type="submit" value="Delete" />-->
-            <input type="submit" value="Delete" ng-click="controller.deleteItem(item)" />
+        <div class="card-reveal">
+          <div class="card-title">{{item.name}}<i class="material-icons right">close</i></div>
+          <p>Added: {{item.addedDate| date}}</p>
+          <p>Expires: {{item.expDate | date}}</p>
+          <p>Days left: {{item.expDate | amDifference : null : 'days'}}</p>
+          <div class="chip" ng-repeat="category in item.categories">
+            <span> {{category.name}}</span>
           </div>
+          <input type="submit" value="Delete" ng-click="controller.deleteItem(item)" />
         </div>
       </div>
-      <!--</form>-->
     </div>
-  <!--</form>-->
+  </div>
   <a href="/simpleFridge">load basic view</a>
 </div>

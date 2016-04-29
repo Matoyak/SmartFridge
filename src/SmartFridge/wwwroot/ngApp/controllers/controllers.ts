@@ -1,9 +1,7 @@
 namespace SmartFridge.Controllers {
-
     export class HomeController {
         public message = 'Hello from the home page!';
     }
-
 
     export class SecretController {
         public secrets;
@@ -16,10 +14,9 @@ namespace SmartFridge.Controllers {
     }
 
     export class ViewFridgeController {
-
-        public fridgeItems;//entire collection of items in database
-        public predicate;//filter component
-        public reverse;//filter component
+        public fridgeItems; //entire collection of items in database
+        public predicate; //filter component
+        public reverse; //filter component
         public categoryImages = [
             {
                 name: 'Dairy',
@@ -68,24 +65,21 @@ namespace SmartFridge.Controllers {
             $http.get('/api/Items')
                 .then((response) => {
                     this.fridgeItems = response.data;
-                })
-                .catch((response) => {
+                }).catch((response) => {
                     console.log(response.data);
-                })
+                });
         }
 
         public deleteItem(itemToGo) {
-            console.log(itemToGo);
-
-            this.$http.post(`/api/Items/delete`, itemToGo)
+            //console.log(itemToGo); //DEBUG
+            this.$http.post(`/api/Items/Delete`, itemToGo)
                 .then((response) => {
                     console.log(response);
-                    //refresh current state (for use when reloading same state)
+                    //refresh current state
                     this.$state.go(this.$state.current, {}, { reload: true });
-                })
-                .catch((response) => {
+                }).catch((response) => {
                     console.log(response);
-                })
+                });
         }
 
         getImage(item) {
@@ -107,13 +101,11 @@ namespace SmartFridge.Controllers {
             }
         }
 
-        //function to assign a CSS class that changes the card's shadow color depending on days untill expiration
         getColor(daysLeft) {
             daysLeft = this.$filter('amDifference')(daysLeft, null, 'days');
             if (daysLeft <= 0) {
                 return 'red';
-            }
-            switch (Math.floor(daysLeft / 3) + 1) {
+            } switch (Math.floor(daysLeft / 3) + 1) {
                 case 1:
                     return 'orange';
                 case 2:
@@ -122,17 +114,15 @@ namespace SmartFridge.Controllers {
             return 'green';
         }
 
-        // Orderby method to orderby any of the property...........
+        // Orderby method to order by any of the property...
         public order(property) {
             if (property === this.predicate) {
                 this.reverse = !this.reverse;
-            }
-            else {
+            } else {
                 this.predicate = property;
                 this.reverse = false;
             }
         }
-
     }
 
     export class AddItemController {
@@ -143,27 +133,24 @@ namespace SmartFridge.Controllers {
         public selectedCategories: any = [];
         public foodCategories = ["Dairy", "Junk", "Frozen", "Refrigerated", "Protein", "Vegetable", "Fruit", "Other", "Grain"];
 
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
-            // get categories
-        }
-        postItem() {
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) { }
+
+        public postItem() {
             this.selectedCategories.forEach((category) => {
                 this.categories.push({ name: category })
             });
-            this.$http.post("/api/items", {
+            this.$http.post("/api/Items", {
                 name: this.name,
                 expDate: this.expDate,
                 categories: this.categories //may need to add value: 0 in case post fails.
-            })
-                .then((response) => {
-                    this.$state.go("myFridge");
-                })
-                .catch((response) => {
-                    console.log(response.data);
-                })
+            }).then((response) => {
+                this.$state.go("myFridge");
+            }).catch((response) => {
+                console.log(response.data);
+            });
         }
 
-        toggleItem(category) {
+        public toggleItem(category) {
             let idx = this.selectedCategories.indexOf(category);
             if (idx >= 0) {
                 this.selectedCategories.splice(idx, 1);
