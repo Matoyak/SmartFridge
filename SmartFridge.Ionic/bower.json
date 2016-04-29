@@ -18,10 +18,21 @@
     "cordova": "^3.4.0",
     "ngCordova": "^0.1.26-alpha"
   },
-  "resolutions": {
-    "angular": "^1.5.5",
-    "moment": "^2.13.0",
-    "angular-animate": "^1.5.5",
-    "angular-ui-router": "^0.2.18"
-  }
+    "resolutions": {
+        "angular": "^1.5.5",
+        "moment": "^2.13.0",
+        "angular-animate": "^1.5.5",
+        "angular-ui-router": "^0.2.18"
+    },
+    "install": {
+        "path": {
+            "js": "/www/lib/js",
+            "css": "/www/lib/css",
+            "less": "/www/lib/css",
+            "scss": "/www/lib/css",
+            "woff": "/www/lib/fonts",
+            "woff2": "/www/lib/fonts",
+            "ttf": "/www/lib/fonts"
+        }
+    }
 }
