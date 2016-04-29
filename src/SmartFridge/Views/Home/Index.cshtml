@@ -28,7 +28,8 @@
           </div>
         </div>
         <div class="sideItems">
-          <div><a class="sideItem" href="/login"><i class="fa fa-sign-in"></i><span class="sideItemFont">Login</span></a></div>
+          <div><a class="sideItem" href="/login" ng-show="!account.isLoggedIn()"><i class="fa fa-sign-in"></i><span class="sideItemFont">Login</span></a></div>
+          <div><a class="sideItem" href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()"><i class="fa fa-sign-in"></i><span class="sideItemFont">Logout</span></a></div>
           <div><a class="sideItem" href="/addItem"><i class="fa fa-plus"></i><span class="sideItemFont">Add</span></a></div>
           <div><a class="sideItem" href="/fridge"><i class="fa fa-list"></i><span class="sideItemFont">View All</span></a></div>
         </div>
@@ -38,7 +39,9 @@
   </nav>
   <div class="section no-pad-bot" id="index-banner">
     <br><br>
-    <ui-view></ui-view>
+    <div class="sticky">
+      <ui-view></ui-view>
+    </div>
     <br><br>
   </div>
   <br><br>
