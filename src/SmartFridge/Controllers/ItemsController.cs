@@ -70,7 +70,7 @@ namespace SmartFridge.Controllers {
         /// </summary>
         /// <param name="itemToUpdate">The item to be updated.</param>
         /// <returns>Returns OK if successful.</returns>
-        [HttpPut("Put")]
+        [HttpPut("Edit")]
         public IActionResult Put([FromBody]ItemDTO itemToUpdate) {
             if(ModelState.IsValid) {
                 //add new item to db

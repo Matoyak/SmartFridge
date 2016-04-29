@@ -1,11 +1,17 @@
 {
-    "compilerOptions": { 
-        "noImplicitAny": false,
-        "noEmitOnError": true,
-        "removeComments": false,
-        "sourceMap": true,
-        "inlineSources": true,
-        "out": "www/scripts/appBundle.js",
-        "target": "es5"
-    }
+  "compileOnSave": true,
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "inlineSources": true,
+    "out": "www/scripts/appBundle.js",
+    "target": "es5"
+  },
+  "exclude": [
+    "node_modules",
+    "typings/main",
+    "typings/main.d.ts"
+  ]
 }

@@ -38,11 +38,6 @@
         <li class="tab col s3"><a href="#test4" ng-click="controller.order('daysLeft')">Days Left</a></li>
       </ul>
     </div>
-    <!--<div id="test1" class="col s12">Test 1</div>
-    <div id="test2" class="col s12">Test 2</div>
-    <div id="test3" class="col s12">Test 3</div>
-    <div id="test4" class="col s12">Test 4</div>-->
-
   </div>
   <!--markup for card-->
   <div class="row">
@@ -65,10 +60,15 @@
           <div class="chip" ng-repeat="category in item.categories">
             <span> {{category.name}}</span>
           </div>
-          <input type="submit" value="Delete" ng-click="controller.deleteItem(item)" />
+          <div class="card-action">
+            <div class="row">
+              <div class="col s12">
+                <a class="btn btn-success btn-lg white-text sticky-button" ng-click="controller.deleteItem(item)">Delete</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <a href="/simpleFridge">load basic view</a>
 </div>
