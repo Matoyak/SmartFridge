@@ -1,53 +1,43 @@
 ﻿<div class="container">
   <h2 class="header light titleFont">Add Food</h2>
-  <br><br />
+
   <form ng-submit="controller.postItem()" name="myForm">
     <div class="row">
-      <div class="col s7">
-        <div class="row">
-          <div class="input-field col s7">
-            <input id="item_name" name="item" type="text"
-                   class="validate grey-text text-darken-4"
-                   ng-model="controller.name" required>
-            <label for="item_name">Your new fridge item</label>
-          </div>
-          <div class="input-field col s7">
-            <label for="inputCreated" >Input date</label>
-            <input id="inputCreated" name="date" type="text" format="yyyy/mm/dd"
-                   input-date ng-model="controller.expDate"
-                   ng-change="controller.seeDate()" required />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s5">
-            <div class="chip" id="{{$index}}" ng-repeat="category in controller.selectedCategories"
-                 ng-click="controller.toggleItem(category, $index)">
-              <span>{{category}}</span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s6">
-            <input type="submit" class="btn btn-success btn-lg  white-text"
-                   ng-disabled="myForm.item.$invalid || myForm.date.$invalid || myForm.category.$invalid"
-                   value="Add my item!" />
-          </div>
-        </div>
+      <div class="input-field col s7">
+        <label for="item_name">New item</label>
+        <input id="item_name" name="item" type="text"
+               ng-model="controller.name" required>     
       </div>
-      <div class="col s5">
-        <div class="row">
-          <div class="input-field col s5">
-            <ul id="{{$index}}" ng-repeat="category in controller.foodCategories">
-              <li>
-                <input type="button" id="{{$index}}" message="Added: {{category}}"
-                       duration="500" toast='click' class="btn white-text"
-                       ng-click="controller.toggleItem(category)" name="category"
-                       value="{{category}}" required />
-              </li>
-            </ul>
-          </div>
-        </div>
+
+      <div class="input-field col s7">
+        <label for="inputCreated">Input date</label>
+        <input id="inputCreated" name="date" type="text" format="yyyy/mm/dd"
+               input-date ng-model="controller.expDate"
+               ng-change="controller.seeDate()" required />        
       </div>
     </div>
+
+      <input type="submit" class="btn btn-success btn-lg  white-text"
+             ng-disabled="myForm.item.$invalid || myForm.date.$invalid || myForm.category.$invalid"
+             value="Add" />
+      <a class='dropdown-button btn' href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
+        Categories
+      </a>
+      <ul id='demoDropdown' class='dropdown-content'>
+        <li id="{{$index}}" ng-repeat="category in controller.foodCategories">
+          <a href="javascript:void(0);" id="{{$index}}" message="{{category}}"
+             duration="500" toast='click'
+             ng-click="controller.toggleItem(category)" name="category"
+             value="{{category}}" required>{{category}}</a>
+        </li>
+      </ul>
+
   </form>
+  <br />
+
+  <ul class="nav">
+    <li class="chip" id="{{$index}}" ng-repeat="category in controller.selectedCategories"
+        ng-click="controller.toggleItem(category, $index)">{{category}}</li>
+  </ul>
+
 </div>
