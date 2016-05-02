@@ -32,7 +32,9 @@ body{
 p.light {
   font-weight: 500;
 }
-
+.borderless-input {
+  border-bottom: 0px solid;
+}
 nav ul a:focus {
   color: #004d40;
 }

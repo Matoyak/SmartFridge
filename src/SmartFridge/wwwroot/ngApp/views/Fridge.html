@@ -1,41 +1,12 @@
 ﻿<div class="container">
-  <!--<pre>Sorting predicate = {{controller.predicate}}, reverse = {{controller.reverse}}</pre>-->
-  <!--filter options-->
-  <!--<table class="item">
-    <tr>
-      <th>
-        <button class="btn-flat" ng-click="controller.order('name')">Name</button>
-        <span class="sortorder" ng-show="controller.predicate === 'name'" ng-class="{reverse:controller.reverse}"></span>
-      </th>
-      <th>
-        <button class="btn-flat" ng-click="controller.order('exp')">Expire Date</button>
-        <span class="sortorder" ng-show="controller.predicate === 'exp'" ng-class="{reverse:controller.reverse}"></span>
-      </th>
-      <th>
-        <button class="btn-flat" ng-click="controller.order('category')">Category</button>
-        <span class="sortorder" ng-show="controller.predicate === 'category'" ng-class="{reverse:controller.reverse}"></span>
-      </th>
-      <th>
-        <button class="btn-flat" ng-click="controller.order('daysLeft')">Days Left</button>
-        <span class="sortorder" ng-show="controller.predicate === 'daysLeft'" ng-class="{reverse:controller.reverse}"></span>
-      </th>
-      <th>
-        <input type="text" placeholder="Search" ng-model="model" />
-      </th>
-    </tr>
-  </table>-->
-  <div class="row">
-    <div class="col s6 l3 right">
-      <input type="text" placeholder="Search" ng-model="model" />
-    </div>
-  </div>
   <div class="row">
     <div class="col s12">
       <ul class="tabs" tabs>
-        <li class="tab col s3"><a href="#test1" ng-click="controller.order('name')">Name</a></li>
-        <li class="tab col s3"><a href="#test2" ng-click="controller.order('exp')">Expire Date</a></li>
-        <li class="tab col s3"><a href="#test3" ng-click="controller.order('category')">Category</a></li>
-        <li class="tab col s3"><a href="#test4" ng-click="controller.order('daysLeft')">Days Left</a></li>
+        <li class="tab col s2"><a href="#test1" ng-click="controller.order('name')">Name</a></li>
+        <li class="tab col s2"><a href="#test2" ng-click="controller.order('exp')">Expire Date</a></li>
+        <li class="tab col s2"><a href="#test3" ng-click="controller.order('category')">Category</a></li>
+        <li class="tab col s2"><a href="#test4" ><input type="text" class="borderless-input" placeholder="Search" ng-model="model"/></a>
+        </li>
       </ul>
     </div>
   </div>
@@ -52,23 +23,43 @@
         </div>
 
         <!--markup shown when card is clicked-->
-        <div class="card-reveal" ng-show="edit">
+        <div class="card-reveal">
           <div class="card-title">{{item.name}}<i class="material-icons right">close</i></div>
-          
+          <br />
+          <input type="text" placeholder="New Name" ng-model="controller.newName" ng-show="controller.editView" />
           <p>Added: {{item.addedDate| date}}</p>
-          <input type="text" ng-show="edit" />
           <p>Expires: {{item.expDate | date}}</p>
-          
-          <p>Days left: {{item.expDate | amDifference : null : 'days'}}</p>
-          <div class="chip" ng-repeat="category in item.categories">
+          <br />
+          <input id="inputCreated" name="date" type="text" placeholder="New Date" format="yyyy/mm/dd"
+                 input-date ng-model="controller.newExpDate"
+                 ng-change="controller.seeDate()" ng-show="controller.editView" />
+          <p ng-hide="controller.editView">Days left: {{item.expDate | amDifference : null : 'days'}}</p>
+          <div class="chip" ng-repeat="category in item.categories" ng-hide="controller.editView">
             <span> {{category.name}}</span>
-            
           </div>
+          <div class="chip" id="{{$index}}" ng-repeat="category in controller.selectedCategories"
+               ng-click="controller.toggleItem(category, $index)" ng-show="controller.editView">
+            {{category}}
+          </div>
+
+          <br />
+          <a class='dropdown-button btn' href='javascript:void(0);' data-activates='demoDropdown' dropdown ng-show="controller.editView">
+            Categories
+          </a>
+          <ul id='demoDropdown' class='dropdown-content'>
+            <li id="{{$index}}" ng-repeat="category in controller.foodCategories">
+              <a href="javascript:void(0);" id="{{$index}}" 
+                 ng-click="controller.toggleItem(category)" name="category"
+                 value="{{category}}">{{category}}</a>
+            </li>
+          </ul>
           <div class="card-action">
             <div class="row">
               <div class="col s12">
-                <a class="btn btn-success btn-lg white-text sticky-button" ng-click="controller.deleteItem(item)">Delete</a>
-                <a class="btn btn-success btn-lg white-text sticky-button" ui-sref="/editItem">Edit</a>
+                <a class="btn btn-success white-text sticky-button col s5 left" ng-click="controller.deleteItem(item)" ng-hide="controller.editView">Delete</a>
+                <a class="btn btn-success white-text sticky-button col s5 right" ng-click="controller.showForm()" ng-hide="controller.editView">Edit</a>
+                <a class="btn btn-success white-text sticky-button col s5 left" ng-show="controller.editView" ng-click='controller.testPut()'>Submit</a>
+                <a class="btn btn-success white-text sticky-button col s5 right" ng-show="controller.editView" ng-click="controller.showForm()">Cancel</a>
               </div>
             </div>
           </div>

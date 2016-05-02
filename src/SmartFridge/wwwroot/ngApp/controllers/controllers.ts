@@ -17,10 +17,11 @@ namespace SmartFridge.Controllers {
         public fridgeItems; //entire collection of items in database
         public predicate; //filter component
         public reverse; //filter component
+        public editView = false;
         public newName;
-        public newDate;
-        public newCategory;
-        public showForm = false;
+        public newExpDate;
+        public newCategeries: any = [];
+        public foodCategories = ["Dairy", "Junk", "Frozen", "Refrigerated", "Protein", "Vegetable", "Fruit", "Other", "Grain"];
         public categoryImages = [
             {
                 name: 'Dairy',
@@ -83,28 +84,48 @@ namespace SmartFridge.Controllers {
                     console.log(response);
                 });
         }
-        public editForm() {
-            this.showForm = true;
-        }
         public deleteItem(itemToGo) {
             //console.log(itemToGo); //DEBUG
-            this.$http.post(`/api/Items/Delete`, itemToGo)
-                .then((response) => {
-                    console.log(response);
-                    //refresh current state
-                    this.$state.go(this.$state.current, {}, { reload: true });
-                }).catch((response) => {
-                    console.log(response);
-                });
+            let deleteItem = confirm("Are you sure you want to delete this item?");
+            if (deleteItem) {
+                this.$http.post(`/api/Items/Delete`, itemToGo)
+                    .then((response) => {
+                        console.log(response);
+                        //refresh current state
+                        this.$state.go(this.$state.current, {}, { reload: true });
+                    }).catch((response) => {
+                        console.log(response);
+                    });
+            }
         }
-
+        testPut() {
+            console.log("walalalalalaaa");
+        }
+        public toggleItem(category) {
+            let idx = this.newCategeries.indexOf(category);
+            if (idx >= 0) {
+                this.newCategeries.splice(idx, 1);
+            }
+            else {
+                this.newCategeries.push(category);
+            }
+        }
+        showForm() {
+            if (this.editView == false) {
+                this.editView = true;
+            }
+            else {
+                this.editView = false;
+                this.newCategeries = [];
+                this.newName = null;
+                this.newExpDate = null;
+            }
+        }
         getImage(item) {
             let img;
-            console.log(item);
             if (item.categories.length >=1) {
                 this.categoryImages.forEach((category, x) => {
                     if (this.categoryImages[x].name === item.categories[0].name) {
-                        console.log(typeof(this.categoryImages[x].img));
                         img = this.categoryImages[x].img;
                         return;
                     }
@@ -112,7 +133,6 @@ namespace SmartFridge.Controllers {
                 return img;
             }
             else {
-                console.log(this.categoryImages[7]);
                 return this.categoryImages[7].img;
             }
         }
