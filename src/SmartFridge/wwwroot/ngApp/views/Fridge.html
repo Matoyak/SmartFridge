@@ -26,7 +26,7 @@
   </table>-->
   <div class="row">
     <div class="col s6 l3 right">
-     <input type="text" placeholder="Search" ng-model="model" />
+      <input type="text" placeholder="Search" ng-model="model" />
     </div>
   </div>
   <div class="row">
@@ -41,7 +41,7 @@
   </div>
   <!--markup for card-->
   <div class="row">
-      <div class="col s12 m4 l3" ng-animate="'animate'" ng-repeat="item in controller.fridgeItems |  orderBy:controller.predicate:controller.reverse | filter:model">
+    <div class="col s12 m4 l3" ng-animate="'animate'" ng-repeat="item in controller.fridgeItems |  orderBy:controller.predicate:controller.reverse | filter:model">
       <div class="card shadow-{{controller.getColor(item.expDate)}}">
         <div class="card-image">
           <img class="activator" ng-src="{{controller.getImage(item)}}" />
@@ -52,18 +52,23 @@
         </div>
 
         <!--markup shown when card is clicked-->
-        <div class="card-reveal">
+        <div class="card-reveal" ng-show="edit">
           <div class="card-title">{{item.name}}<i class="material-icons right">close</i></div>
+          
           <p>Added: {{item.addedDate| date}}</p>
+          <input type="text" ng-show="edit" />
           <p>Expires: {{item.expDate | date}}</p>
+          
           <p>Days left: {{item.expDate | amDifference : null : 'days'}}</p>
           <div class="chip" ng-repeat="category in item.categories">
             <span> {{category.name}}</span>
+            
           </div>
           <div class="card-action">
             <div class="row">
               <div class="col s12">
                 <a class="btn btn-success btn-lg white-text sticky-button" ng-click="controller.deleteItem(item)">Delete</a>
+                <a class="btn btn-success btn-lg white-text sticky-button" ui-sref="/editItem">Edit</a>
               </div>
             </div>
           </div>

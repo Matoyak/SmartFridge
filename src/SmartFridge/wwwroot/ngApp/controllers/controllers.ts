@@ -17,6 +17,10 @@ namespace SmartFridge.Controllers {
         public fridgeItems; //entire collection of items in database
         public predicate; //filter component
         public reverse; //filter component
+        public newName;
+        public newDate;
+        public newCategory;
+        public showForm = false;
         public categoryImages = [
             {
                 name: 'Dairy',
@@ -69,7 +73,19 @@ namespace SmartFridge.Controllers {
                     console.log(response.data);
                 });
         }
-
+        public editItem(itemToEdit) {
+            this.$http.put(`/api/Items/Delete`, itemToEdit)
+            .then((response) => {
+                    console.log(response);
+                    //refresh current state
+                    this.$state.go(this.$state.current, {}, { reload: true });
+                }).catch((response) => {
+                    console.log(response);
+                });
+        }
+        public editForm() {
+            this.showForm = true;
+        }
         public deleteItem(itemToGo) {
             //console.log(itemToGo); //DEBUG
             this.$http.post(`/api/Items/Delete`, itemToGo)
