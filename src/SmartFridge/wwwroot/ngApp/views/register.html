@@ -1,6 +1,6 @@
+<br />
 <div class="container">
   <h2 class="header light titleFont" >Register</h2>
-  <br />
   <ul>
     <li ng-repeat="externalLogin in account.externalLogins">
       <a target="_self" href="{{externalLogin.url}}">{{externalLogin.name}}</a>
@@ -23,9 +23,7 @@
         <label for="registerLast">Last Name:</label>
         <input id="registerLast" type="text" ng-model="controller.registerUser.lastName" />
       </div>
-    </div>
-
-    <div class="row">
+ 
       <div class="input-field col s7">
         <label for="registerEmail">Email:</label>
         <input id="registerEmail" type="email" ng-model="controller.registerUser.email" />
