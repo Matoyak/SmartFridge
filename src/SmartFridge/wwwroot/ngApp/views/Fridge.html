@@ -5,7 +5,8 @@
         <li class="tab col s2"><a href="#test1" ng-click="controller.order('name')">Name</a></li>
         <li class="tab col s2"><a href="#test2" ng-click="controller.order('exp')">Expire Date</a></li>
         <li class="tab col s2"><a href="#test3" ng-click="controller.order('category')">Category</a></li>
-        <li class="tab col s2"><a href="#test4" ><input type="text" class="borderless-input" placeholder="Search" ng-model="model"/></a>
+        <li class="tab col s2">
+          <a href="#test4"><input type="text" class="borderless-input" placeholder="Search" ng-model="model" /></a>
         </li>
       </ul>
     </div>
@@ -48,7 +49,7 @@
           </a>
           <ul id='demoDropdown' class='dropdown-content'>
             <li id="{{$index}}" ng-repeat="category in controller.foodCategories">
-              <a href="javascript:void(0);" id="{{$index}}" 
+              <a href="javascript:void(0);" id="{{$index}}"
                  ng-click="controller.toggleItem(category)" name="category"
                  value="{{category}}">{{category}}</a>
             </li>

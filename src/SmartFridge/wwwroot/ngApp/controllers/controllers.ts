@@ -21,11 +21,11 @@ namespace SmartFridge.Controllers {
         public newName;
         public newExpDate;
         public newCategeries: any = [];
-        public foodCategories = ["Dairy", "Junk", "Frozen", "Refrigerated", "Protein", "Vegetable", "Fruit", "Other", "Grain"];
+        public foodCategories = ["Dairy", "Junk", "Frozen", "Refrigerated", "Protein", "Vegetable", "Fruit", "Other", "Grain", "Leftovers"];
         public categoryImages = [
             {
                 name: 'Dairy',
-                img: '../../images/dairy.png',
+                img: '../../images/dairy.png', //this is an egg? Eggs aren't dairy.
             },
             {
                 name: 'Frozen',
@@ -60,11 +60,16 @@ namespace SmartFridge.Controllers {
                 img: '../../images/fruit1.png',
             },
             {
+                name: 'Leftovers',
+                img: '../../images/other2.png',
+            },
+            {
                 name: 'Refrigerated',
                 img: '../../images/kitchen.png',
             }
 
         ];
+
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $filter) {
             //get items from database
             $http.get('/api/Items')
@@ -74,9 +79,10 @@ namespace SmartFridge.Controllers {
                     console.log(response.data);
                 });
         }
+
         public editItem(itemToEdit) {
             this.$http.put(`/api/Items/Delete`, itemToEdit)
-            .then((response) => {
+                .then((response) => {
                     console.log(response);
                     //refresh current state
                     this.$state.go(this.$state.current, {}, { reload: true });
@@ -84,6 +90,7 @@ namespace SmartFridge.Controllers {
                     console.log(response);
                 });
         }
+
         public deleteItem(itemToGo) {
             //console.log(itemToGo); //DEBUG
             let deleteItem = confirm("Are you sure you want to delete this item?");
@@ -98,9 +105,11 @@ namespace SmartFridge.Controllers {
                     });
             }
         }
-        testPut() {
+
+        public testPut() {
             console.log("walalalalalaaa");
         }
+
         public toggleItem(category) {
             let idx = this.newCategeries.indexOf(category);
             if (idx >= 0) {
@@ -110,7 +119,8 @@ namespace SmartFridge.Controllers {
                 this.newCategeries.push(category);
             }
         }
-        showForm() {
+
+        public showForm() {
             if (this.editView == false) {
                 this.editView = true;
             }
@@ -121,9 +131,10 @@ namespace SmartFridge.Controllers {
                 this.newExpDate = null;
             }
         }
-        getImage(item) {
+
+        public getImage(item) {
             let img;
-            if (item.categories.length >=1) {
+            if (item.categories.length >= 1) {
                 this.categoryImages.forEach((category, x) => {
                     if (this.categoryImages[x].name === item.categories[0].name) {
                         img = this.categoryImages[x].img;
@@ -137,7 +148,7 @@ namespace SmartFridge.Controllers {
             }
         }
 
-        getColor(daysLeft) {
+        public getColor(daysLeft) {
             daysLeft = this.$filter('amDifference')(daysLeft, null, 'days');
             if (daysLeft <= 0) {
                 return 'red';
