@@ -93,8 +93,7 @@ namespace SmartFridge.Controllers {
 
         public deleteItem(itemToGo) {
             //console.log(itemToGo); //DEBUG
-            let deleteItem = confirm("Are you sure you want to delete this item?");
-            if (deleteItem) {
+            
                 this.$http.post(`/api/Items/Delete`, itemToGo)
                     .then((response) => {
                         console.log(response);
@@ -103,7 +102,7 @@ namespace SmartFridge.Controllers {
                     }).catch((response) => {
                         console.log(response);
                     });
-            }
+            
         }
 
         public testPut() {
