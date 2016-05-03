@@ -65,7 +65,7 @@ namespace SmartFridge.Controllers {
             },
             {
                 name: 'Refrigerated',
-                img: '../../images/FridgeImage.png',
+                img: '../../images/fridgeimage.png',
             }
 
         ];
