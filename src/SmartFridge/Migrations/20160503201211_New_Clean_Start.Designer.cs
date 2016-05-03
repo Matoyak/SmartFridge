@@ -8,8 +8,8 @@ using SmartFridge.Models;
 namespace SmartFridge.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160429010256_Clean_Start")]
-    partial class Clean_Start
+    [Migration("20160503201211_New_Clean_Start")]
+    partial class New_Clean_Start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
