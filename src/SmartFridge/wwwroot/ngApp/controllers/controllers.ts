@@ -25,7 +25,7 @@ namespace SmartFridge.Controllers {
         public categoryImages = [
             {
                 name: 'Dairy',
-                img: '../../images/dairy.png', //this is an egg? Eggs aren't dairy.
+                img: '../../images/cheese.png', //this is an egg? Eggs aren't dairy.
             },
             {
                 name: 'Frozen',
@@ -132,16 +132,11 @@ namespace SmartFridge.Controllers {
             }
         }
 
-        public getImage(item) {
-            let img;
+        public getImage(item):any {
             if (item.categories.length >= 1) {
-                this.categoryImages.forEach((category, x) => {
-                    if (this.categoryImages[x].name === item.categories[0].name) {
-                        img = this.categoryImages[x].img;
-                        return;
-                    }
-                })
-                return img;
+                return this.categoryImages.filter((category, x) => {
+                    return this.categoryImages[x].name === item.categories[0].name;
+                })[0].img;
             }
             else {
                 return this.categoryImages[7].img;
