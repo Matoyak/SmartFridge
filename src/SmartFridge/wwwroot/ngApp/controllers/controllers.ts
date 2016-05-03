@@ -25,7 +25,7 @@ namespace SmartFridge.Controllers {
         public categoryImages = [
             {
                 name: 'Dairy',
-                img: '../../images/dairy.png', //this is an egg? Eggs aren't dairy.
+                img: '../../images/cheese.png', //this is an egg? Eggs aren't dairy.
             },
             {
                 name: 'Frozen',

@@ -27,7 +27,16 @@ body{
   margin-top: 20px;
 }
 .card-action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin-top: 10px;
+}
+.btnzCenter {
+  display: flex;
+  align-self:center;
+  text-align:center;
+  min-width: 100%;
 }
 p.light {
   font-weight: 500;
@@ -35,6 +44,9 @@ p.light {
 .borderless-input {
   border-bottom: 0px solid;
 }
+/*.minwdth {
+  min-width: 250px;
+}*/
 nav ul a:focus {
   color: #004d40;
 }
@@ -136,4 +148,9 @@ input[type=password]:focus:not([readonly]) {
 
 .chip:hover{
   cursor:pointer;
+}
+
+.btnCenter {
+  display: block;
+  margin: auto;
 }
