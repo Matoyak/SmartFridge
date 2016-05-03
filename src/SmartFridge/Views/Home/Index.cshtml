@@ -10,7 +10,10 @@
   <link href="~/css/site.css" rel="stylesheet" />
   <base href="/" />
 </head>
+
 <body ng-controller="AccountController as account">
+
+  <!-- Navbar -->
   <nav class="teal lighten-1" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="/" class="brand-logo"><img class="nav-logo-1" src="~/images/smFr.png" /></a>
@@ -21,6 +24,8 @@
         @*<li ng-show="account.isLoggedIn()">{{account.getUserName()}}</li>*@
         <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>
       </ul>
+
+      <!-- Side nav mobile view -->
       <div id="nav-mobile" class="side-nav grey lighten-3">
         <div class="sideHeader  teal lighten-1">
           <div>
@@ -38,6 +43,7 @@
     </div>
   </nav>
 
+  <!-- Footer -->
     <div class="sticky">
       <ui-view></ui-view>
     </div>
@@ -62,10 +68,10 @@
         <div class="nav col l3 s12">
           <ul>
             <li>
-              <a class="socIcon" href="#"><i class="fa fa-facebook"></i></a>
-              <a class="socIcon" href="#"><i class="fa fa-twitter"></i></a>
-              <a class="socIcon" href="#"><i class="fa fa-linkedin"></i></a>
-              <a class="socIcon" href="#"><i class="fa fa-google-plus"></i></a>
+              <a class="socIcon" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+              <a class="socIcon" href="https://twitter.com/?lang=en"><i class="fa fa-twitter"></i></a>
+              <a class="socIcon" href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+              <a class="socIcon" href="https://plus.google.com/collections/featured"><i class="fa fa-google-plus"></i></a>
             </li>
           </ul>
         </div>
@@ -73,7 +79,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container center">
-        Made by <a class="teal-text text-lighten-5" href="#">Team Code Troopers</a>
+        Made by <a class="teal-text text-lighten-5" href="https://www.codercamps.com/">Team Mond</a>
       </div>
     </div>
   </footer>
