@@ -17,10 +17,15 @@ namespace SmartFridge.Controllers {
         public fridgeItems; //entire collection of items in database
         public predicate; //filter component
         public reverse; //filter component
+        public editView = false;
+        public newName;
+        public newExpDate;
+        public newCategeries: any = [];
+        public foodCategories = ["Dairy", "Frozen", "Fruit", "Grain", "Junk", "Leftovers", "Protein", "Refrigerated", "Vegetable", "Other"];
         public categoryImages = [
             {
                 name: 'Dairy',
-                img: '../../images/dairy.png',
+                img: '../../images/dairy.png', //this is an egg? Eggs aren't dairy.
             },
             {
                 name: 'Frozen',
@@ -55,11 +60,16 @@ namespace SmartFridge.Controllers {
                 img: '../../images/fruit1.png',
             },
             {
+                name: 'Leftovers',
+                img: '../../images/other2.png',
+            },
+            {
                 name: 'Refrigerated',
-                img: '../../images/kitchen.png',
+                img: '../../images/FridgeImage.png',
             }
 
         ];
+
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $filter) {
             //get items from database
             $http.get('/api/Items')
@@ -70,9 +80,8 @@ namespace SmartFridge.Controllers {
                 });
         }
 
-        public deleteItem(itemToGo) {
-            //console.log(itemToGo); //DEBUG
-            this.$http.post(`/api/Items/Delete`, itemToGo)
+        public editItem(itemToEdit) {
+            this.$http.put(`/api/Items/Delete`, itemToEdit)
                 .then((response) => {
                     console.log(response);
                     //refresh current state
@@ -82,13 +91,52 @@ namespace SmartFridge.Controllers {
                 });
         }
 
-        getImage(item) {
+        public deleteItem(itemToGo) {
+            //console.log(itemToGo); //DEBUG
+            let deleteItem = confirm("Are you sure you want to delete this item?");
+            if (deleteItem) {
+                this.$http.post(`/api/Items/Delete`, itemToGo)
+                    .then((response) => {
+                        console.log(response);
+                        //refresh current state
+                        this.$state.go(this.$state.current, {}, { reload: true });
+                    }).catch((response) => {
+                        console.log(response);
+                    });
+            }
+        }
+
+        public testPut() {
+            console.log("walalalalalaaa");
+        }
+
+        public toggleItem(category) {
+            let idx = this.newCategeries.indexOf(category);
+            if (idx >= 0) {
+                this.newCategeries.splice(idx, 1);
+            }
+            else {
+                this.newCategeries.push(category);
+            }
+        }
+
+        public showForm() {
+            if (this.editView == false) {
+                this.editView = true;
+            }
+            else {
+                this.editView = false;
+                this.newCategeries = [];
+                this.newName = null;
+                this.newExpDate = null;
+            }
+        }
+
+        public getImage(item) {
             let img;
-            console.log(item);
-            if (item.categories.length >=1) {
+            if (item.categories.length >= 1) {
                 this.categoryImages.forEach((category, x) => {
                     if (this.categoryImages[x].name === item.categories[0].name) {
-                        console.log(typeof(this.categoryImages[x].img));
                         img = this.categoryImages[x].img;
                         return;
                     }
@@ -96,12 +144,11 @@ namespace SmartFridge.Controllers {
                 return img;
             }
             else {
-                console.log(this.categoryImages[7]);
                 return this.categoryImages[7].img;
             }
         }
 
-        getColor(daysLeft) {
+        public getColor(daysLeft) {
             daysLeft = this.$filter('amDifference')(daysLeft, null, 'days');
             if (daysLeft <= 0) {
                 return 'red';
@@ -131,7 +178,7 @@ namespace SmartFridge.Controllers {
         public categories = [];
         public selectedCategory;
         public selectedCategories: any = [];
-        public foodCategories = ["Dairy", "Junk", "Frozen", "Refrigerated", "Protein", "Vegetable", "Fruit", "Other", "Grain"];
+        public foodCategories = ["Dairy", "Frozen", "Fruit", "Grain", "Junk", "Leftovers", "Protein", "Refrigerated", "Vegetable", "Other"];
 
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) { }
 

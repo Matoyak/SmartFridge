@@ -54,6 +54,12 @@ namespace SmartFridge {
                 controller: SmartFridge.Controllers.AddItemController,
                 controllerAs: 'controller'
             })
+            .state('editItem', {
+                url: '/editItem',
+                templateUrl: '/ngApp/views/edit.html',
+                controller: SmartFridge.Controllers.AddItemController,
+                controllerAs: 'controller'
+            })
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'

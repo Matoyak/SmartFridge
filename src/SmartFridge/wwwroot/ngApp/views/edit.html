@@ -1,29 +1,25 @@
-﻿<br />
-<div class="container">
-  <h2 class="header light titleFont">Add Food</h2>
+﻿<div class="container">
+  <h2 class="header light titleFont">Edit Food</h2>
 
-  <!-- Add to list form -->
-  <form ng-submit="controller.postItem()" name="myForm">
+  <form ng-submit="controller.editItem()" name="myForm">
     <div class="row">
       <div class="input-field col s7">
         <label for="item_name">New item</label>
         <input id="item_name" name="item" type="text"
                ng-model="controller.name" required>
       </div>
+
       <div class="input-field col s7">
-        <label for="inputCreated">Expiration Date</label>
+        <label for="inputCreated">Input date</label>
         <input id="inputCreated" name="date" type="text" format="yyyy/mm/dd"
                input-date ng-model="controller.expDate"
                ng-change="controller.seeDate()" required />
       </div>
     </div>
 
-    <!-- Add Button -->
     <input type="submit" class="btn btn-success btn-lg  white-text"
            ng-disabled="myForm.item.$invalid || myForm.date.$invalid || myForm.category.$invalid"
            value="Add" />
-
-    <!-- Categories Button -->
     <a class='dropdown-button btn' href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
       Categories
     </a>
@@ -35,12 +31,13 @@
            value="{{category}}" required>{{category}}</a>
       </li>
     </ul>
+
   </form>
   <br />
 
-  <!-- Chips show under buttons  -->
   <ul class="nav">
     <li class="chip" id="{{$index}}" ng-repeat="category in controller.selectedCategories"
         ng-click="controller.toggleItem(category, $index)">{{category}}</li>
   </ul>
+
 </div>
