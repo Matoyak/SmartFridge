@@ -25,7 +25,7 @@ namespace SmartFridge.Controllers {
         public categoryImages = [
             {
                 name: 'Dairy',
-                img: '../../images/dairy.png', //this is an egg? Eggs aren't dairy.
+                img: '../../images/cheese.png', //this is an egg? Eggs aren't dairy.
             },
             {
                 name: 'Frozen',
@@ -93,8 +93,7 @@ namespace SmartFridge.Controllers {
 
         public deleteItem(itemToGo) {
             //console.log(itemToGo); //DEBUG
-            let deleteItem = confirm("Are you sure you want to delete this item?");
-            if (deleteItem) {
+            
                 this.$http.post(`/api/Items/Delete`, itemToGo)
                     .then((response) => {
                         console.log(response);
@@ -103,7 +102,7 @@ namespace SmartFridge.Controllers {
                     }).catch((response) => {
                         console.log(response);
                     });
-            }
+            
         }
 
         public testPut() {
@@ -132,16 +131,11 @@ namespace SmartFridge.Controllers {
             }
         }
 
-        public getImage(item) {
-            let img;
+        public getImage(item):any {
             if (item.categories.length >= 1) {
-                this.categoryImages.forEach((category, x) => {
-                    if (this.categoryImages[x].name === item.categories[0].name) {
-                        img = this.categoryImages[x].img;
-                        return;
-                    }
-                })
-                return img;
+                return this.categoryImages.filter((category, x) => {
+                    return this.categoryImages[x].name === item.categories[0].name;
+                })[0].img;
             }
             else {
                 return this.categoryImages[7].img;
