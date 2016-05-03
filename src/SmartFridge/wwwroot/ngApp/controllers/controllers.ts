@@ -21,7 +21,7 @@ namespace SmartFridge.Controllers {
         public newName;
         public newExpDate;
         public newCategeries: any = [];
-        public foodCategories = ["Dairy", "Junk", "Frozen", "Refrigerated", "Protein", "Vegetable", "Fruit", "Other", "Grain", "Leftovers"];
+        public foodCategories = ["Dairy", "Frozen", "Fruit", "Grain", "Junk", "Leftovers", "Protein", "Refrigerated", "Vegetable", "Other"];
         public categoryImages = [
             {
                 name: 'Dairy',
@@ -65,7 +65,7 @@ namespace SmartFridge.Controllers {
             },
             {
                 name: 'Refrigerated',
-                img: '../../images/kitchen.png',
+                img: '../../images/FridgeImage.png',
             }
 
         ];
@@ -178,7 +178,7 @@ namespace SmartFridge.Controllers {
         public categories = [];
         public selectedCategory;
         public selectedCategories: any = [];
-        public foodCategories = ["Dairy", "Junk", "Frozen", "Refrigerated", "Protein", "Vegetable", "Fruit", "Other", "Grain"];
+        public foodCategories = ["Dairy", "Frozen", "Fruit", "Grain", "Junk", "Leftovers", "Protein", "Refrigerated", "Vegetable", "Other"];
 
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) { }
 
