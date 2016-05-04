@@ -117,11 +117,11 @@ namespace SmartFridge.Services {
         /// <param name="itemFromFront">The item to be updated.</param>
         /// <param name="currUser">The current user</param>
         /// <returns>Returns true if successful update.</returns>
-        public bool UpdateItem(ItemDTO itemFromFront, string currUser) {
-            Item updateItem = _itemRepo.GetItemByUsername(currUser, itemFromFront.Name, itemFromFront.AddedDate).FirstOrDefault();
+        public bool UpdateItem(EditItemDTO items, string currUser) {
+            Item updateItem = _itemRepo.GetItemByUsername(currUser, items.currItem.Name, items.currItem.AddedDate).FirstOrDefault();
             if(updateItem != null) {
-                List<Category> dbCategories = _catRepo.GetCategories(itemFromFront.Categories.Select(cat => cat.Name)).ToList();
-                foreach(Category newCat in (from c in itemFromFront.Categories
+                List<Category> dbCategories = _catRepo.GetCategories(items.newItem.Categories.Select(cat => cat.Name)).ToList();
+                foreach(Category newCat in (from c in items.newItem.Categories
                                             where !dbCategories.Any(db => db.Name == c.Name)
                                             select new Category() {
                                                 Name = c.Name
@@ -131,9 +131,9 @@ namespace SmartFridge.Services {
                 }
                 _catRepo.SaveChanges();
 
-                updateItem.Name = itemFromFront.Name;
-                updateItem.Barcode = itemFromFront.Barcode;
-                updateItem.ExpDate = itemFromFront.ExpDate;
+                updateItem.Name = items.newItem.Name;
+                updateItem.Barcode = items.newItem.Barcode;
+                updateItem.ExpDate = items.newItem.ExpDate;
                 updateItem.ItemCategories = (from c in dbCategories
                                              select new ItemCategory() {
                                                  Category = c,

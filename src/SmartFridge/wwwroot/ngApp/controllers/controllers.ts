@@ -25,7 +25,7 @@ namespace SmartFridge.Controllers {
         public categoryImages = [
             {
                 name: 'Dairy',
-                img: '../../images/cheese.png', //this is an egg? Eggs aren't dairy.
+                img: '../../images/cheese.png',
             },
             {
                 name: 'Frozen',
@@ -81,7 +81,22 @@ namespace SmartFridge.Controllers {
         }
 
         public editItem(itemToEdit) {
-            this.$http.put(`/api/Items/Delete`, itemToEdit)
+            console.log(itemToEdit); //debug
+            let items = {
+                currItem: {
+                    addedDate: itemToEdit.addedDate,
+                    //public ICollection < KeyValueDTO < int >> Categories
+                    expDate: itemToEdit.expDate,
+                    name: itemToEdit.name
+                },
+                newItem: {
+                    name: this.newName,
+                    expDate: this.newExpDate,
+                    categories: this.newCategeries
+                }
+            };
+            //this.$http.put(`/api/Items/Edit`, itemToEdit)
+            this.$http.put(`/api/Items/Edit`, items)
                 .then((response) => {
                     console.log(response);
                     //refresh current state
@@ -93,20 +108,20 @@ namespace SmartFridge.Controllers {
 
         public deleteItem(itemToGo) {
             //console.log(itemToGo); //DEBUG
-            
-                this.$http.post(`/api/Items/Delete`, itemToGo)
-                    .then((response) => {
-                        console.log(response);
-                        //refresh current state
-                        this.$state.go(this.$state.current, {}, { reload: true });
-                    }).catch((response) => {
-                        console.log(response);
-                    });
-            
+
+            this.$http.post(`/api/Items/Delete`, itemToGo)
+                .then((response) => {
+                    console.log(response);
+                    //refresh current state
+                    this.$state.go(this.$state.current, {}, { reload: true });
+                }).catch((response) => {
+                    console.log(response);
+                });
+
         }
 
         public testPut() {
-            console.log("walalalalalaaa");
+            console.log("walalalalalaaa"); //debug
         }
 
         public toggleItem(category) {
@@ -131,7 +146,7 @@ namespace SmartFridge.Controllers {
             }
         }
 
-        public getImage(item):any {
+        public getImage(item): any {
             if (item.categories.length >= 1) {
                 return this.categoryImages.filter((category, x) => {
                     return this.categoryImages[x].name === item.categories[0].name;
@@ -140,6 +155,11 @@ namespace SmartFridge.Controllers {
             else {
                 return this.categoryImages[7].img;
             }
+        }
+
+        public setDaysLeft(expDate) {
+            let numDaysLeft = this.$filter('amDifference')(expDate, null, 'days');
+            return numDaysLeft;
         }
 
         public getColor(daysLeft) {
