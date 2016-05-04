@@ -40,7 +40,7 @@
                     <div class="chip" ng-repeat="category in item.categories" ng-hide="controller.editView == item">
                         <span> {{category.name}}</span>
                     </div>
-                    <div class="chip" id="{{$index}}" ng-repeat="category in controller.selectedCategories"
+                    <div class="chip" id="{{$index}}" ng-repeat="category in controller.newCategories"
                          ng-click="controller.toggleItem(category, $index)" ng-show="controller.editView == item">
                         {{category}}
                     </div>

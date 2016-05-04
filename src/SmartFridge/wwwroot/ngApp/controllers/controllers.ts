@@ -20,7 +20,7 @@ namespace SmartFridge.Controllers {
         public editView = false;
         public newName;
         public newExpDate;
-        public newCategeries: any = [];
+        public newCategories: any = [];
         public foodCategories = ["Dairy", "Frozen", "Fruit", "Grain", "Junk", "Leftovers", "Protein", "Refrigerated", "Vegetable", "Other"];
         public categoryImages = [
             {
@@ -107,15 +107,18 @@ namespace SmartFridge.Controllers {
 
         public testPut() {
             console.log("walalalalalaaa");
+            console.log(this.newName);
+            console.log(this.newExpDate);
+            console.log(this.newCategories);
         }
 
         public toggleItem(category) {
-            let idx = this.newCategeries.indexOf(category);
+            let idx = this.newCategories.indexOf(category);
             if (idx >= 0) {
-                this.newCategeries.splice(idx, 1);
+                this.newCategories.splice(idx, 1);
             }
             else {
-                this.newCategeries.push(category);
+                this.newCategories.push(category);
             }
         }
 
@@ -125,7 +128,7 @@ namespace SmartFridge.Controllers {
             }
             else {
                 this.editView = false;
-                this.newCategeries = [];
+                this.newCategories = [];
                 this.newName = null;
                 this.newExpDate = null;
             }
