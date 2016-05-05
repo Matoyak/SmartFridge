@@ -80,62 +80,62 @@ namespace SmartFridge.Controllers {
                     console.log(response.data);
                 });
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        // #justGoWithIt #theresProbablyAFilterForThis #YOLO #heldTogetherWithDuctTape #RedNeckCode #DanTheMan #DanWasHere #NeedMoreCoffee
+        public editItemCallback(origItem) {
+            console.log('............editItemCallback...........');
+            console.log(origItem);
+            console.log(`origItem name: ${origItem.name}`);
+            console.log(`origItem expDate: ${origItem.expDate}`);
+            console.log(`origItem categories: ${origItem.categories}`);
+            let name;
+            let expDate;
+            let categories;
+            if (this.newName = !null) {
+                name = this.newName;
+            }
+            else {
+                name = origItem.name;
+            }
+            console.log(`editItem name: ${name}`);
+            if (this.newExpDate = !null) {
+                expDate = this.newExpDate;
+            }
+            else {
+                expDate = origItem.expDate;
+            }
+            console.log(`editItem expDate: ${expDate}`);
+            if (this.newCategories = !null) {
+                categories = this.newCategories;
+            }
+            else {
+                categories = origItem.categories;
+            }
+            console.log(`editItem categories: ${categories}`);
+            this.editItem({
+               
+                    name,
+                    expDate,
+                    categories
+               
+            }, origItem);
+        }
+        public editItem(itemToEdit, origItem) {
+            console.log('............editItem............');
+            console.log(`editItem: ${
+                itemToEdit.name,
+                itemToEdit.expDate,
+                itemToEdit.catergories                    
+                }, origItem: ${
+                origItem.name,
+                origItem.expDate,
+                origItem.categories
+                }`);
+            let newItem = {
+                itemToEdit,
+                origItem
+            }
+            this.$http.put(`/api/Items/Edit`, newItem)
 
 
 
@@ -196,9 +196,13 @@ namespace SmartFridge.Controllers {
                 });
 
         }
-
-        public testPut() {
-            console.log("walalalalalaaa"); //debug
+       
+        public testPut(origItem) {
+            console.log(origItem);
+            console.log(this.newName);
+            console.log(this.newExpDate);
+            console.log(this.newCategories);
+            
         }
 
         public toggleItem(category) {
