@@ -43,9 +43,9 @@
           <p>Added: {{item.addedDate| date}}</p>
           <p>Expires: {{item.expDate | date}}</p>
           <br />
-          <input id="inputCreated" name="date" type="text" placeholder="New Date" format="yyyy/mm/dd"
+          <!--<input id="inputCreated" name="date" type="text" placeholder="New Date" format="yyyy/mm/dd"
                  input-date ng-model="controller.newExpDate"
-                 ng-change="controller.seeDate()" ng-show="controller.editView == item" />
+                 ng-change="controller.seeDate()" ng-show="controller.editView == item" />-->
           <p ng-hide="controller.editView == item">Days left: {{item.expDate | amDifference : null : 'days'}}</p>
           <div class="chip" ng-repeat="category in item.categories" ng-hide="controller.editView == item">
             <span> {{category.name}}</span>
@@ -71,8 +71,23 @@
               <div class="col s12 center">
                 <a class="btn-floating black" ng-click="controller.deleteItem(item)" ng-hide="controller.editView == item"><i class="fa fa-trash"></i></a>
                 <a class="btn-floating blue" ng-click="controller.editView = item" ng-hide="controller.editView == item"><i class="fa fa-pencil"></i></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <!--<a class="btn-floating green" ng-show="controller.editView == item" ng-click='controller.testPut()'><i class="fa fa-check"></i></a>-->
-                <a class="btn-floating green" ng-show="controller.editView == item" ng-click='controller.editItem(item)'><i class="fa fa-check"></i></a>
+                <!--<a class="btn-floating green" ng-show="controller.editView == item" ng-click='controller.editItem(item)'><i class="fa fa-check"></i></a>-->
                 <a class="btn-floating red" ng-show="controller.editView == item" ng-click="controller.showForm()"><i class="fa fa-times"></i></a>
               </div>
             </div>

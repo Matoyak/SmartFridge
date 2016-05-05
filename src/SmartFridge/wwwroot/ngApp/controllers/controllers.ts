@@ -20,7 +20,8 @@ namespace SmartFridge.Controllers {
         public editView = false;
         public newName;
         public newExpDate;
-        public newCategeries: any = [];
+        public categoriesEdit;
+        public newCategories: any = [];
         public foodCategories = ["Dairy", "Frozen", "Fruit", "Grain", "Junk", "Leftovers", "Protein", "Refrigerated", "Vegetable", "Other"];
         public categoryImages = [
             {
@@ -80,31 +81,107 @@ namespace SmartFridge.Controllers {
                 });
         }
 
-        public editItem(itemToEdit) {
-            console.log(itemToEdit); //debug
-            let items = {
-                currItem: {
-                    addedDate: itemToEdit.addedDate,
-                    //public ICollection < KeyValueDTO < int >> Categories
-                    expDate: itemToEdit.expDate,
-                    name: itemToEdit.name
-                },
-                newItem: {
-                    name: this.newName,
-                    expDate: this.newExpDate,
-                    categories: this.newCategeries
-                }
-            };
-            //this.$http.put(`/api/Items/Edit`, itemToEdit)
-            this.$http.put(`/api/Items/Edit`, items)
-                .then((response) => {
-                    console.log(response);
-                    //refresh current state
-                    this.$state.go(this.$state.current, {}, { reload: true });
-                }).catch((response) => {
-                    console.log(response);
-                });
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //public editItem(itemToEdit) {
+
+        //    this.newCategories.forEach((category) => {
+        //        this.categoriesEdit.push({ name: category })
+        //    });
+        //    console.log(itemToEdit); //debug
+        //    if (this.newName == null || this.newName == undefined || this.newName == "") {
+        //        this.newName = itemToEdit.name;
+        //    }
+        //    if (this.newExpDate == null || this.newExpDate == undefined) {
+        //        this.newExpDate = itemToEdit.expDate;
+        //    }
+        //    let items = {
+        //        currItem: {
+        //            //addedDate: itemToEdit.addedDate,
+        //            expDate: itemToEdit.expDate,
+        //            name: itemToEdit.name,
+        //            categories: itemToEdit.categories
+        //        },
+        //        newItem: {
+        //            name: this.newName,
+        //            expDate: this.newExpDate,
+        //            categories: this.categoriesEdit
+        //        }
+        //    };
+        //    //this.$http.put(`/api/Items/Edit`, itemToEdit)
+        //    this.$http.put(`/api/Items/Edit`, items)
+        //        .then((response) => {
+        //            console.log(response);
+        //            //refresh current state
+        //            this.$state.go(this.$state.current, {}, { reload: true });
+        //        }).catch((response) => {
+        //            console.log(response);
+        //        });
+        //}
 
         public deleteItem(itemToGo) {
             //console.log(itemToGo); //DEBUG
@@ -125,12 +202,12 @@ namespace SmartFridge.Controllers {
         }
 
         public toggleItem(category) {
-            let idx = this.newCategeries.indexOf(category);
+            let idx = this.newCategories.indexOf(category);
             if (idx >= 0) {
-                this.newCategeries.splice(idx, 1);
+                this.newCategories.splice(idx, 1);
             }
             else {
-                this.newCategeries.push(category);
+                this.newCategories.push(category);
             }
         }
 
@@ -140,7 +217,7 @@ namespace SmartFridge.Controllers {
             }
             else {
                 this.editView = false;
-                this.newCategeries = [];
+                this.newCategories = [];
                 this.newName = null;
                 this.newExpDate = null;
             }
